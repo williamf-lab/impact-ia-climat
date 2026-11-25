@@ -1,6 +1,6 @@
 # Le défi : « L'impact environnemental de l'IA générative »
 
-Relevé fait le 25 novembre 2026 par N4 (agent « site web »). Défi confirmé par William Nejo.
+Relevé fait le 25 novembre 2026. Défi confirmé par le groupe.
 
 La page officielle du défi (defis.data.gouv.fr) ne s'affiche qu'avec JavaScript. Son contenu est le même que celui de la page « thématique » de data.gouv.fr, lisible sans JavaScript, d'où vient ce relevé. Les citations entre guillemets sont des extraits de cette page ; le reste est un résumé. En cas de doute, la page du défi fait foi.
 

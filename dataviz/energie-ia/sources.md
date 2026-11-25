@@ -1,6 +1,6 @@
 # Sources — « Électricité, eau, carbone et métaux par entreprise d'IA »
 
-Toutes les sources ont été consultées le **25/11/2026** (agent N3). Les chiffres des graphiques sont
+Toutes les sources ont été consultées le **25/11/2026**. Les chiffres des graphiques sont
 recalculés par `calcul_agregats.py` ; rien n'est saisi à la main dans `data-energie.js`.
 
 Les deux sources principales, **AI Energy Score** et **compar:IA**, figurent dans la liste des données du défi
