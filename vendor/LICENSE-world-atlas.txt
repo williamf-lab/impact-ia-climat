@@ -1,0 +1,3 @@
+world-atlas (https://github.com/topojson/world-atlas) — licence ISC, © Mike Bostock.
+Données géographiques : Natural Earth (https://www.naturalearthdata.com), domaine public.
+Fichier world-50m.js : sous-ensemble Europe et pays voisins de countries-50m.json (world-atlas 2.x), généré par tools/build_world.py.
