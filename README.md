@@ -27,7 +27,7 @@ pages/
   conversation.html         Partie 2 (sous-groupe 2) : le coût d'une conversation avec l'IA
   transparence.html         Partie 3 (sous-groupe 3) : transparence des IA (carte + graphique énergie)
   conclusion.html           Conclusion du groupe
-  methodologie.html         Données, jeux data.gouv.fr, licences, façon de travailler
+  methodologie.html         Données, licence du site, façon de travailler
   _modele.html              Page modèle à copier (hors menu)
 css/
   tokens.css                Couleurs, police, espacements partagés (NE PAS MODIFIER)

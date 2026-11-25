@@ -51,16 +51,14 @@
 
     <header class="tete-page conteneur">
       <h1>Méthodologie</h1>
-      <p class="chapeau">Les données utilisées, leurs licences et la façon dont le groupe a travaillé.</p>
+      <p class="chapeau">Les données utilisées et la façon dont le groupe a travaillé.</p>
 
       <nav class="sommaire-page" aria-labelledby="titre-sommaire-page">
         <h2 class="sommaire-page__titre" id="titre-sommaire-page">Sur cette page</h2>
         <ol>
           <li><a href="#donnees">Les données</a></li>
-          <li><a href="#data-gouv">Jeux de données de data.gouv.fr</a></li>
-          <li><a href="#licences">Licences</a></li>
+          <li><a href="#licences">Licence du site</a></li>
           <li><a href="#travail">Comment nous avons travaillé</a></li>
-          <li><a href="#limites">Limites</a></li>
         </ol>
       </nav>
     </header>
@@ -71,13 +69,12 @@
 
       <div class="tableau-defilant" role="region" aria-labelledby="legende-sources" tabindex="0">
         <table class="tableau tableau--large">
-          <caption id="legende-sources">Sources de données et licences</caption>
+          <caption id="legende-sources">Sources de données</caption>
           <thead>
             <tr>
               <th scope="col">Source</th>
               <th scope="col">Producteur</th>
               <th scope="col">Ce qu'elle mesure</th>
-              <th scope="col">Licence</th>
               <th scope="col">Utilisée par</th>
             </tr>
           </thead>
@@ -86,40 +83,34 @@
               <th scope="row"><a href="https://gs.statcounter.com/ai-chatbot-market-share/all/europe">StatCounter Global Stats</a>, octobre 2026</th>
               <td>StatCounter</td>
               <td>Part des visites envoyées vers des sites web par chaque IA conversationnelle, par pays</td>
-              <td>CC BY-SA 3.0, avec un lien vers StatCounter (<a href="https://gs.statcounter.com/faq">FAQ de StatCounter</a>)</td>
               <td>3. Transparence, figure 1</td>
             </tr>
             <tr>
               <th scope="row"><a href="https://crfm.stanford.edu/fmti/December-2025">Foundation Model Transparency Index 2025</a></th>
               <td>Stanford CRFM</td>
               <td>Transparence de 13 entreprises qui développent des modèles de fondation, sur 100</td>
-              <td><span class="a-completer a-completer--en-ligne">À vérifier : pas de licence indiquée sur la page de l'indice</span></td>
               <td>3. Transparence, introduction</td>
             </tr>
             <tr>
               <th scope="row"><a href="https://huggingface.github.io/AIEnergyScore">AI Energy Score</a></th>
               <td>Hugging Face</td>
               <td>Électricité consommée par des modèles ouverts, en Wh pour 1&nbsp;000 requêtes</td>
-              <td><span class="a-completer a-completer--en-ligne">À vérifier par le sous-groupe Transparence</span></td>
               <td>3. Transparence, figure 2</td>
             </tr>
             <tr>
               <th scope="row">Chiffres publiés par les entreprises</th>
               <td>Google, OpenAI, Mistral AI…</td>
               <td>Consommation par requête, eau, carbone, métaux, selon ce que chaque entreprise publie ; autres estimations de tiers (EcoLogits, CLEER…), détaillées dans <code>dataviz/energie-ia/README.md</code></td>
-              <td><span class="a-completer a-completer--en-ligne">À compléter</span></td>
               <td>3. Transparence, figure 2</td>
             </tr>
             <tr>
               <th scope="row">Fond de carte <a href="https://github.com/topojson/world-atlas">world-atlas</a> (fichier <code>vendor/world-50m.js</code>)</th>
               <td>Natural Earth, mis en forme par world-atlas</td>
               <td>Contours des pays, Europe et pays voisins</td>
-              <td>Données : domaine public ; world-atlas : ISC</td>
               <td>3. Transparence, figure 1</td>
             </tr>
             <tr>
               <th scope="row"><span class="a-completer a-completer--en-ligne">À compléter par les sous-groupes 1 et 2 : une ligne par source</span></th>
-              <td></td>
               <td></td>
               <td></td>
               <td></td>
@@ -130,62 +121,9 @@
       <p class="note">Le détail des traitements de chaque figure est dans le fichier README.md de son dossier (par exemple <code>dataviz/carte-europe/README.md</code>).</p>
     </section>
 
-    <section class="section conteneur flux" id="data-gouv" aria-labelledby="titre-data-gouv">
-      <h2 id="titre-data-gouv">Jeux de données de data.gouv.fr</h2>
-      <p>Le défi associe trois jeux de données publiés sur data.gouv.fr. Licences relevées sur leurs pages le 25 novembre 2026.</p>
-
-      <div class="tableau-defilant" role="region" aria-labelledby="legende-data-gouv" tabindex="0">
-        <table class="tableau">
-          <caption id="legende-data-gouv">Jeux de données associés au défi</caption>
-          <thead>
-            <tr>
-              <th scope="col">Jeu de données</th>
-              <th scope="col">Producteur</th>
-              <th scope="col">Licence</th>
-              <th scope="col">Utilisé par</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row"><a href="https://www.data.gouv.fr/datasets/compar-ia">Compar:IA</a></th>
-              <td>Ministère de la Culture</td>
-              <td>Licence Ouverte 2.0</td>
-              <td><span class="a-completer a-completer--en-ligne">À compléter</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="https://www.data.gouv.fr/datasets/consommation-annuelle-definitive-delectricite-et-de-gaz-par-iris-des-sites-industriels-raccordes-aux-reseaux-de-transport">Consommation annuelle définitive d'électricité et de gaz par IRIS des sites industriels raccordés aux réseaux de transport</a></th>
-              <td>Open Data Réseaux Énergies (NaTran, RTE, Teréga)</td>
-              <td>Licence Ouverte 2.0</td>
-              <td><span class="a-completer a-completer--en-ligne">À compléter</span></td>
-            </tr>
-            <tr>
-              <th scope="row"><a href="https://www.data.gouv.fr/datasets/donnees-openstreetmap-integrales-de-france-metropolitaine">Données OpenStreetMap intégrales de France métropolitaine</a></th>
-              <td>OpenStreetMap</td>
-              <td>ODbL</td>
-              <td><span class="a-completer a-completer--en-ligne">À compléter</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="encadre">
-        <p>Pour publier le site comme réutilisation sur data.gouv.fr, il faudra y associer les jeux de données de data.gouv.fr réellement utilisés. StatCounter, le Foundation Model Transparency Index et l'AI Energy Score ne sont pas publiés sur data.gouv.fr.</p>
-      </div>
-    </section>
 
     <section class="section conteneur flux" id="licences" aria-labelledby="titre-licences">
-      <h2 id="titre-licences">Licences</h2>
-      <h3>Données</h3>
-      <p>Les licences de chaque source sont dans les tableaux ci-dessus. Les figures construites avec des données de StatCounter doivent créditer StatCounter avec un lien. La licence CC BY-SA 3.0 demande aussi de partager les adaptations sous la même licence ou une licence compatible.</p>
-
-      <h3>Code et police</h3>
-      <ul>
-        <li>D3 version 7.9.0, bibliothèque des graphiques : licence ISC (fichier <code>vendor/LICENSE-d3.txt</code>).</li>
-        <li>world-atlas, fond de carte : licence ISC (fichier <code>vendor/LICENSE-world-atlas.txt</code>).</li>
-        <li>Hanken Grotesk, police du site, chargée depuis Google Fonts : licence SIL Open Font License 1.1.</li>
-      </ul>
-
-      <h3>Contenus du site</h3>
+      <h2 id="titre-licences">Licence du site</h2>
       <p>Les textes et les figures du site sont publiés sous licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">Creative Commons Attribution – Partage dans les mêmes conditions 4.0 (CC BY-SA 4.0)</a> : chacun peut les réutiliser et les modifier, à condition de citer le groupe et de partager le résultat sous la même licence. Ce choix respecte la licence CC BY-SA des données StatCounter utilisées pour la carte.</p>
     </section>
 
@@ -201,18 +139,15 @@
         <li>sous-groupe 3&nbsp;: <a href="transparence.html">quel est l'impact des différents modèles d'IA, et lequel vaut-il mieux utiliser&nbsp;?</a></li>
       </ol>
       <p>Dans un premier temps, chaque sous-groupe a fait ses recherches à partir des données proposées par le défi de l'Open Data University, puis les a complétées par d'autres sources d'information&nbsp;: rapports d'organismes publics, études et articles, cités dans les sources de chaque partie.</p>
-      <div class="a-completer">
-        <p><strong>À compléter par le groupe :</strong> les outils utilisés (tableur, éditeur de code, etc.) et l'usage éventuel d'outils d'IA (code, rédaction, recherche), avec la façon dont vous avez vérifié leurs résultats.</p>
-      </div>
+      <h3>Outils</h3>
+      <ul>
+        <li>Google Docs, pour rédiger et partager nos textes&nbsp;;</li>
+        <li>Excel, pour rassembler les données par pays&nbsp;;</li>
+        <li>Claude Code, un assistant de programmation fondé sur l'IA, pour construire le site et les graphiques&nbsp;;</li>
+        <li>GitHub, pour mettre le site en commun et le publier avec GitHub Pages.</li>
+      </ul>
     </section>
 
-    <section class="section conteneur flux" id="limites" aria-labelledby="titre-limites">
-      <h2 id="titre-limites">Limites</h2>
-      <p>Les limites propres à chaque figure sont détaillées sur la page de chaque sous-groupe, par exemple dans la partie <a href="transparence.html#methode">Méthode et limites</a> de la page Transparence.</p>
-      <div class="a-completer">
-        <p><strong>À compléter par le groupe :</strong> les limites communes à tout le projet (données disponibles, périmètre, temps, ce que vous auriez fait autrement).</p>
-      </div>
-    </section>
   </main>
 
   <!-- Pied de page : identique dans toutes les pages du dossier pages/ -->
@@ -232,7 +167,7 @@
         <h2 class="pied__titre">Licences</h2>
         <p>Textes et figures : <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC BY-SA 4.0</a>.</p>
         <p>Graphiques réalisés avec D3 (licence ISC). Police Hanken Grotesk (licence SIL Open Font).</p>
-        <p><a href="methodologie.html#licences">Licences des données</a></p>
+        <p><a href="methodologie.html#licences">Licence du site</a></p>
       </div>
     </div>
   </footer>
