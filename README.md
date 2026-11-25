@@ -227,7 +227,7 @@ Le défi demande de publier le travail comme **réutilisation** sur data.gouv.fr
 - [ ] Plus aucun bloc « À compléter » : la recherche de `a-completer` dans les fichiers ne donne plus rien (à part `css/style.css` et `_modele.html`).
 - [ ] Chaque figure a un titre, un sous-titre (ce qui est mesuré, l'unité), une source avec lien et date, et un texte d'analyse.
 - [ ] Chaque chiffre du site a une source ; nombres au format français (`43,3 %`).
-- [ ] Pied de page rempli ; licence des contenus choisie et indiquée dans le pied de page de toutes les pages et dans la méthodologie.
+- [x] Pied de page rempli ; licence des contenus (CC BY-SA 4.0) indiquée dans le pied de page de toutes les pages et dans la méthodologie.
 - [ ] StatCounter crédité avec un lien (licence CC BY-SA 3.0) ; licences des autres sources vérifiées dans la méthodologie.
 - [ ] Méthodologie complète : données, traitements, limites, usage éventuel d'outils d'IA.
 - [ ] Tous les liens fonctionnent, en local et en ligne (attention aux majuscules et aux accents).
@@ -244,6 +244,6 @@ Le défi demande de publier le travail comme **réutilisation** sur data.gouv.fr
 - Fond de carte : [world-atlas](https://github.com/topojson/world-atlas) (licence ISC), données [Natural Earth](https://www.naturalearthdata.com/) (domaine public) (`vendor/LICENSE-world-atlas.txt`).
 - Police [Hanken Grotesk](https://fonts.google.com/specimen/Hanken+Grotesk) : SIL Open Font License 1.1.
 - Données : voir la page [Méthodologie](pages/methodologie.html) (StatCounter CC BY-SA 3.0, Compar:IA et ODRE Licence Ouverte 2.0, OpenStreetMap ODbL…).
-- Textes, figures et code du site : licence à choisir par le groupe.
+- Textes et figures du site : licence CC BY-SA 4.0.
 
 Pour relancer les vérifications automatiques (facultatif, avec Node.js et Playwright) : `node _checks/n4/verif.js` depuis la racine du projet. Le script ouvre chaque page à 1280 et 375 px, en clair et en sombre, enregistre des captures dans `_checks/n4/` et signale les erreurs, débordements et contrastes insuffisants.
