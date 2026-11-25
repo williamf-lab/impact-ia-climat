@@ -1,0 +1,6 @@
+# Fichier Excel du groupe : jamais publié
+data/
+*.xlsx
+# Fichiers de travail
+_checks/
+__pycache__/

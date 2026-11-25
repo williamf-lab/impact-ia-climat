@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impact de l'IA sur le climat</title>
+  <meta name="description" content="Site d'un groupe d'étudiants sur l'impact de l'IA sur le climat, réalisé pour le défi « L'impact environnemental de l'IA générative » proposé par l'ADEME (Open Data University).">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- Police Hanken Grotesk (Google Fonts). Sans connexion, une police du système la remplace. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..800;1,400..800&amp;display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/site.js"></script>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <!-- En-tête : identique dans toutes les pages à la racine du site -->
+  <header class="entete">
+    <div class="conteneur entete__barre">
+      <a class="marque" href="index.html">Impact de l'IA sur le climat</a>
+      <button class="bouton-theme" type="button" aria-pressed="false">
+        <span class="bouton-theme__icone" aria-hidden="true"></span>
+        <span class="bouton-theme__texte">Thème sombre</span>
+      </button>
+      <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="bouton-menu__icone" aria-hidden="true"></span>
+        Menu
+      </button>
+      <nav class="menu" id="menu-principal" aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="pages/transparence.html">Transparence des IA</a></li>
+          <li><a href="pages/sous-groupe-2.html">Sous-groupe 2</a></li>
+          <li><a href="pages/sous-groupe-3.html">Sous-groupe 3</a></li>
+          <li><a href="pages/methodologie.html">Méthodologie</a></li>
+          <li><a href="pages/equipe.html">Équipe</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+
+    <section class="ouverture conteneur flux" aria-labelledby="titre-site">
+      <h1 class="ouverture__titre" id="titre-site">Impact de l'IA sur le climat</h1>
+      <p class="ouverture__chapeau">Le site de notre groupe pour le défi « L'impact environnemental de l'IA générative », proposé par l'ADEME sur defis.data.gouv.fr. Chaque sous-groupe y traite une partie de la question.</p>
+
+      <figure class="citation">
+        <blockquote>
+          <p>Face à l'opacité du secteur de l'IA générative sur son impact environnemental, comment mobiliser les données existantes pour éclairer le débat public et permettre des choix avisés&nbsp;?</p>
+        </blockquote>
+        <figcaption>La question posée par le défi, sur <a href="https://defis.data.gouv.fr/defis/limpact-environnemental-de-lia-generative">la page du défi</a>.</figcaption>
+      </figure>
+
+      <div class="a-completer">
+        <p><strong>À compléter par tout le groupe :</strong> notre problématique sur l'impact de l'IA sur le climat, en 3 à 5 phrases. Quelle question précise traitons-nous, pourquoi, et comment les sous-groupes y répondent-ils ensemble&nbsp;?</p>
+      </div>
+    </section>
+
+    <section class="section conteneur flux" aria-labelledby="titre-defi">
+      <h2 id="titre-defi">Le défi en bref</h2>
+      <p>Le défi est proposé par l'ADEME (Agence de la transition écologique) dans le cadre de l'Open Data University, un programme qui invite des étudiants de toute la France à travailler sur des données ouvertes. Il part d'un constat : l'IA générative paraît immatérielle, mais elle repose sur des terminaux, des réseaux et des centres de données, et les entreprises publient peu de chiffres comparables sur son impact.</p>
+
+      <ul class="reperes">
+        <li>
+          <p>En 2022, le numérique représentait <strong>4,4&#8239;%</strong> de l'empreinte carbone de la France.</p>
+          <p class="reperes__source">Étude <a href="https://infos.ademe.fr/magazine-janvier-2025/numerique-quel-impact-environnemental-en-2022/">ADEME-Arcep</a>, citée par le défi</p>
+        </li>
+        <li>
+          <p>En 2024, les centres de données du monde ont consommé environ <strong>415&nbsp;TWh</strong> d'électricité, soit 1,5&#8239;% de la consommation mondiale.</p>
+          <p class="reperes__source"><a href="https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai">Agence internationale de l'énergie</a>, citée par le défi</p>
+        </li>
+        <li>
+          <p>Sans changement majeur, cette consommation pourrait atteindre environ <strong>945&nbsp;TWh</strong> en 2030.</p>
+          <p class="reperes__source"><a href="https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai">Agence internationale de l'énergie</a>, citée par le défi</p>
+        </li>
+      </ul>
+
+      <p>Le défi poursuit trois objectifs : faire comprendre la réalité matérielle de l'IA générative et les ordres de grandeur de son impact ; nourrir le débat public sur la transparence du secteur, en confrontant les discours des entreprises à leurs impacts réels ; sensibiliser aux enjeux environnementaux de la trajectoire actuelle de l'IA.</p>
+      <p><a href="https://defis.data.gouv.fr/defis/limpact-environnemental-de-lia-generative">Lire le défi sur defis.data.gouv.fr</a></p>
+    </section>
+
+    <section class="section conteneur flux" aria-labelledby="titre-sous-groupes">
+      <h2 id="titre-sous-groupes">Les sous-groupes</h2>
+      <p>Chaque sous-groupe a sa page, avec ses figures, sa méthode et ses sources.</p>
+
+      <ul class="sommaire">
+        <li class="sommaire__entree">
+          <a class="sommaire__lien" href="pages/transparence.html">
+            <span class="sommaire__titre">Transparence des entreprises d'IA</span>
+            <span class="sommaire__points" aria-hidden="true"></span>
+            <span class="sommaire__info">2 figures</span>
+          </a>
+          <p class="sommaire__resume">Quelle IA conversationnelle domine dans chaque pays européen ? Que publient OpenAI, Google, Anthropic, Microsoft ou Perplexity sur l'électricité, l'eau, le carbone et les métaux de leurs IA&nbsp;?</p>
+        </li>
+        <li class="sommaire__entree">
+          <a class="sommaire__lien" href="pages/sous-groupe-2.html">
+            <span class="sommaire__titre">Sous-groupe 2 : à définir</span>
+            <span class="sommaire__points" aria-hidden="true"></span>
+            <span class="sommaire__info">en préparation</span>
+          </a>
+          <div class="a-completer">
+            <p><strong>À compléter par le sous-groupe 2 :</strong> titre de la partie (dans ce lien et dans le menu) et résumé en une phrase.</p>
+          </div>
+        </li>
+        <li class="sommaire__entree">
+          <a class="sommaire__lien" href="pages/sous-groupe-3.html">
+            <span class="sommaire__titre">Sous-groupe 3 : à définir</span>
+            <span class="sommaire__points" aria-hidden="true"></span>
+            <span class="sommaire__info">en préparation</span>
+          </a>
+          <div class="a-completer">
+            <p><strong>À compléter par le sous-groupe 3 :</strong> titre de la partie (dans ce lien et dans le menu) et résumé en une phrase.</p>
+          </div>
+        </li>
+      </ul>
+
+      <p>Voir aussi la <a href="pages/methodologie.html">méthodologie</a> (données, licences, façon de travailler) et la page <a href="pages/equipe.html">équipe</a>.</p>
+    </section>
+
+    <section class="section conteneur flux" aria-labelledby="titre-donnees">
+      <h2 id="titre-donnees">Les données utilisées</h2>
+      <p>Un aperçu des sources du site. Le détail des traitements, des licences et des limites est sur la page <a href="pages/methodologie.html">méthodologie</a>.</p>
+
+      <div class="tableau-defilant" role="region" aria-labelledby="legende-donnees" tabindex="0">
+        <table class="tableau">
+          <caption id="legende-donnees">Sources de données du site</caption>
+          <thead>
+            <tr>
+              <th scope="col">Source</th>
+              <th scope="col">Ce qu'elle mesure</th>
+              <th scope="col">Période</th>
+              <th scope="col">Utilisée par</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><a href="https://gs.statcounter.com/ai-chatbot-market-share/all/europe">StatCounter Global Stats</a></th>
+              <td>Part des visites envoyées vers des sites web par chaque IA conversationnelle, par pays</td>
+              <td>Octobre 2026</td>
+              <td>Transparence (figure 1)</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://crfm.stanford.edu/fmti/December-2025">Foundation Model Transparency Index</a> (Stanford)</th>
+              <td>Transparence des entreprises qui développent des modèles d'IA, score sur 100</td>
+              <td>Décembre 2025</td>
+              <td>Transparence</td>
+            </tr>
+            <tr>
+              <th scope="row">Chiffres publiés par les entreprises, <a href="https://huggingface.github.io/AIEnergyScore">AI Energy Score</a> (Hugging Face) et autres estimations de tiers</th>
+              <td>Électricité consommée par des modèles d'IA ; eau, carbone, métaux et minéraux quand ils sont publiés</td>
+              <td><span class="a-completer a-completer--en-ligne">À compléter par le sous-groupe Transparence</span></td>
+              <td>Transparence (figure 2)</td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.data.gouv.fr/datasets/compar-ia">Compar:IA</a> (ministère de la Culture)</th>
+              <td>Conversations, votes et réactions de la plateforme publique de comparaison d'IA conversationnelles</td>
+              <td>Mise à jour du 3 juin 2026</td>
+              <td>Proposé par le défi. <span class="a-completer a-completer--en-ligne">À compléter : utilisé par…</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.data.gouv.fr/datasets/consommation-annuelle-definitive-delectricite-et-de-gaz-par-iris-des-sites-industriels-raccordes-aux-reseaux-de-transport">Consommation d'électricité et de gaz des sites industriels par IRIS</a> (ODRE)</th>
+              <td>Consommation annuelle des sites industriels raccordés aux réseaux de transport d'énergie</td>
+              <td>Mise à jour du 6 décembre 2024</td>
+              <td>Proposé par le défi. <span class="a-completer a-completer--en-ligne">À compléter : utilisé par…</span></td>
+            </tr>
+            <tr>
+              <th scope="row"><a href="https://www.data.gouv.fr/datasets/donnees-openstreetmap-integrales-de-france-metropolitaine">Données OpenStreetMap de France métropolitaine</a></th>
+              <td>Données cartographiques collaboratives ; le défi propose de s'en servir pour localiser les centres de données</td>
+              <td>Extrait quotidien</td>
+              <td>Proposé par le défi. <span class="a-completer a-completer--en-ligne">À compléter : utilisé par…</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pied de page : identique dans toutes les pages à la racine du site -->
+  <footer class="pied">
+    <div class="conteneur pied__grille">
+      <div>
+        <h2 class="pied__titre">Un projet étudiant</h2>
+        <p>Site réalisé par un groupe d'étudiants : <span class="a-completer a-completer--en-ligne">À compléter par le groupe : formation, établissement, année</span>.</p>
+        <p>Ce site est indépendant : il n'engage ni l'ADEME, ni data.gouv.fr.</p>
+      </div>
+      <div>
+        <h2 class="pied__titre">Le défi</h2>
+        <p>Réponse au défi <a href="https://defis.data.gouv.fr/defis/limpact-environnemental-de-lia-generative">« L'impact environnemental de l'IA générative »</a>, proposé par l'ADEME dans le cadre de l'Open Data University.</p>
+        <p>Données ouvertes publiques : <a href="https://www.data.gouv.fr/">data.gouv.fr</a></p>
+      </div>
+      <div>
+        <h2 class="pied__titre">Licences</h2>
+        <p>Textes et figures : <span class="a-completer a-completer--en-ligne">À compléter par le groupe : licence choisie</span>.</p>
+        <p>Graphiques réalisés avec D3 (licence ISC). Police Hanken Grotesk (licence SIL Open Font).</p>
+        <p><a href="pages/methodologie.html#licences">Licences des données</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
