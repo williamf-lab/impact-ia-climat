@@ -1,0 +1,115 @@
+/* ==========================================================================
+   tokens.css — variables partagées par tout le site et toutes les dataviz.
+   Géré par la coordination (N1). Ne pas changer les couleurs des IA :
+   elles ont été validées dans cet ordre (daltonisme, contraste) avec
+   l'outil de validation de palette, en clair et en sombre.
+   ========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* Typographie */
+  --font-sans: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-caption: 13px;
+  --fs-body: 16px;
+  --fs-heading: 20px;
+  --fs-title: clamp(30px, 4.2vw, 48px);
+
+  /* Surfaces et encres — thème clair */
+  --surface: #ffffff;          /* fond des graphiques et des cartes (surface validée) */
+  --surface-2: #f4f6f9;        /* fond de page sous les cartes */
+  --ink: #191919;              /* texte principal */
+  --ink-2: #666666;            /* texte secondaire, axes, légendes, sources */
+  --line: #e7e7e7;             /* grilles et séparateurs fins (1px) */
+  --axis: #c2c2c2;             /* ligne de base des graphiques */
+  --border: rgba(11, 11, 11, 0.10);
+  --nodata: #e4e4e4;           /* pays sans donnée sur la carte */
+  --autre: #b3b3b3;            /* « Autre IA » */
+  --tooltip-bg: #ffffff;
+  --tooltip-shadow: 0 6px 24px rgba(0, 0, 0, 0.14);
+
+  /* Couleurs des IA / entreprises — ordre validé : Gemini, Claude, ChatGPT, Perplexity, Copilot */
+  --ia-gemini: #257de0;        /* Google */
+  --ia-claude: #f47230;        /* Anthropic */
+  --ia-chatgpt: #00b894;       /* OpenAI */
+  --ia-perplexity: #f2a600;    /* Perplexity */
+  --ia-copilot: #ee7fac;       /* Microsoft */
+  --ia-mistral: #008a17;       /* Mistral AI (graphiques énergie) */
+  --ia-meta: #6a4ce2;          /* Meta (graphiques énergie) */
+  --ia-deepseek: #ec4647;      /* DeepSeek (graphiques énergie) */
+
+  /* Texte posé sur un aplat de couleur IA */
+  --on-ia: #ffffff;
+  --on-ia-perplexity: #0b0b0b;
+
+  /* Accent du site (liens, focus) — jamais utilisé pour une donnée */
+  --accent: #0a2540;
+  --focus: #0a2540;
+
+  /* Espacements et formes */
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 40px;
+  --radius: 10px;
+}
+
+/* Thème sombre : réglage du système, sauf si la page force data-theme="light" */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --surface: #191919;
+    --surface-2: #0f1114;
+    --ink: #efefef;
+    --ink-2: #9c9c9c;
+    --line: #303030;
+    --axis: #474747;
+    --border: rgba(255, 255, 255, 0.10);
+    --nodata: #2c2c2c;
+    --autre: #6f6f6f;
+    --tooltip-bg: #222222;
+    --tooltip-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+    --ia-gemini: #338ced;
+    --ia-claude: #e76624;
+    --ia-chatgpt: #00a888;
+    --ia-perplexity: #d28e05;
+    --ia-copilot: #e24d8b;
+    --ia-mistral: #0aac23;
+    --ia-meta: #9887ef;
+    --ia-deepseek: #eb6263;
+    --on-ia: #ffffff;
+    --on-ia-perplexity: #ffffff;
+    --accent: #8fd3ff;
+    --focus: #8fd3ff;
+  }
+}
+
+/* Thème sombre forcé par la page (bouton ou visionneuse) */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface: #191919;
+  --surface-2: #0f1114;
+  --ink: #efefef;
+  --ink-2: #9c9c9c;
+  --line: #303030;
+  --axis: #474747;
+  --border: rgba(255, 255, 255, 0.10);
+  --nodata: #2c2c2c;
+  --autre: #6f6f6f;
+  --tooltip-bg: #222222;
+  --tooltip-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  --ia-gemini: #338ced;
+  --ia-claude: #e76624;
+  --ia-chatgpt: #00a888;
+  --ia-perplexity: #d28e05;
+  --ia-copilot: #e24d8b;
+  --ia-mistral: #0aac23;
+  --ia-meta: #9887ef;
+  --ia-deepseek: #eb6263;
+  --on-ia: #ffffff;
+  --on-ia-perplexity: #ffffff;
+  --accent: #8fd3ff;
+  --focus: #8fd3ff;
+}
+
+:root[data-theme="light"] { color-scheme: light; }

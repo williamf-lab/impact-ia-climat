@@ -1,0 +1,952 @@
+/* ==========================================================================
+   style.css — mise en page du site « Impact de l'IA sur le climat »
+
+   À charger APRÈS css/tokens.css (qui définit les couleurs et la police)
+   et AVANT les feuilles des dataviz (dataviz/<nom>/<nom>.css).
+
+   Sommaire du fichier
+     1. Réglages du site            7. Planches (blocs de figures)
+     2. Base                        8. Tableaux, pastilles, notes, sources
+     3. En-tête et menu             9. Blocs « À compléter »
+     4. Pied de page               10. Page d'accueil
+     5. Mise en page et textes     11. Utilitaires, impression
+     6. Haut de page (fil d'Ariane, titre, « Sur cette page »)
+
+   Trois règles pour le groupe
+   - Les couleurs viennent de css/tokens.css : utilisez var(--ink),
+     var(--surface)… et ne recopiez pas de codes couleur ici.
+   - Les couleurs des IA (var(--ia-…)) sont réservées aux données :
+     ne les utilisez pas pour décorer un titre, un bouton ou un fond.
+   - Les styles d'une dataviz restent dans son dossier dataviz/<nom>/.
+   ========================================================================== */
+
+
+/* 1. Réglages du site ------------------------------------------------------ */
+
+:root {
+  --site-largeur: 75rem;                    /* largeur maximale du contenu (1 200 px) */
+  --site-marge: clamp(16px, 4vw, 40px);     /* marge à gauche et à droite */
+  --site-mesure: 68ch;                      /* longueur maximale d'une ligne de texte */
+  --site-filet: 1px solid var(--border);    /* trait de séparation fin */
+  --site-pas-planche: clamp(14px, 2.4vw, 28px); /* marge intérieure des planches */
+}
+
+
+/* 2. Base ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;          /* garde le pied de page en bas */
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;            /* 17 px pour le texte courant */
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--surface-2);
+}
+
+main {
+  display: block;
+  flex: 1 0 auto;
+}
+
+main:focus {
+  outline: none;                   /* focus posé par le lien d'évitement */
+}
+
+h1,
+h2 {
+  margin: 0 0 var(--gap-md);
+  font-weight: 700;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-title);
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1.15rem + 1.5vw, 2rem);
+  letter-spacing: -0.02em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--accent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+code {
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+
+/* Lien « Aller au contenu » : visible seulement quand il reçoit le focus */
+.lien-evitement {
+  position: absolute;
+  top: -200px;
+  left: var(--gap-md);
+  z-index: 100;
+  padding: 10px 16px;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--focus);
+  border-radius: 6px;
+}
+
+.lien-evitement:focus {
+  top: var(--gap-sm);
+}
+
+
+/* 3. En-tête et menu ------------------------------------------------------- */
+
+.entete {
+  background: var(--surface);
+  border-bottom: var(--site-filet);
+}
+
+.entete__barre {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--gap-sm);
+  padding-top: 12px;
+}
+
+/* Nom du site, précédé d'une petite échelle graphique (le signe du site) */
+.marque {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 11rem;                 /* rétrécit (le nom passe sur 2 lignes) plutôt que de repousser les boutons */
+  min-width: 0;
+  padding-block: 8px;
+  text-wrap: balance;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.marque::before {
+  content: "";
+  flex: none;
+  width: 28px;
+  height: 9px;
+  background:
+    linear-gradient(currentColor, currentColor) left bottom / 100% 2px no-repeat,
+    linear-gradient(90deg, currentColor 0 25%, transparent 25% 50%, currentColor 50% 75%, transparent 75% 100%) left top / 100% 7px no-repeat;
+}
+
+.marque:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Boutons de l'en-tête : cachés sans JavaScript (le menu reste visible) */
+.bouton-theme,
+.bouton-menu {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 6px 14px;
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.bouton-theme:hover,
+.bouton-menu:hover {
+  border-color: var(--ink-2);
+}
+
+.js .bouton-theme {
+  display: inline-flex;
+}
+
+/* Icône du thème : un disque à moitié plein */
+.bouton-theme__icone {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
+.bouton-theme[aria-pressed="true"] {
+  background: var(--surface-2);
+}
+
+.bouton-theme[aria-pressed="true"] .bouton-theme__icone {
+  transform: rotate(180deg);
+}
+
+/* Icône du menu : trois traits */
+.bouton-menu__icone {
+  flex: none;
+  width: 16px;
+  height: 2px;
+  background: currentColor;
+  box-shadow: 0 -5px 0 currentColor, 0 5px 0 currentColor;
+}
+
+.bouton-menu[aria-expanded="true"] {
+  background: var(--surface-2);
+}
+
+/* Le menu occupe sa propre ligne, sous le nom du site */
+.menu {
+  flex-basis: 100%;
+}
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: clamp(16px, 2.2vw, 30px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu a {
+  display: block;
+  padding: 10px 0 9px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.menu a:hover {
+  border-bottom-color: var(--axis);
+}
+
+.menu a[aria-current="page"] {
+  font-weight: 700;
+  border-bottom-color: var(--accent);
+}
+
+/* Petits écrans : menu repliable (seulement si JavaScript fonctionne) */
+@media (max-width: 63.99em) {
+  .entete__barre {
+    padding-bottom: 12px;
+  }
+
+  .js .bouton-menu {
+    display: inline-flex;
+  }
+
+  .js .menu {
+    display: none;
+  }
+
+  .js .menu.est-ouvert {
+    display: block;
+    margin-top: 12px;
+    border-top: var(--site-filet);
+  }
+
+  .js .menu ul {
+    flex-direction: column;
+  }
+
+  .js .menu li + li {
+    border-top: 1px solid var(--line);
+  }
+
+  .js .menu a {
+    padding: 13px 0 13px 12px;
+    border-bottom: 0;
+    border-left: 3px solid transparent;
+  }
+
+  .js .menu a[aria-current="page"] {
+    border-left-color: var(--accent);
+  }
+}
+
+/* Très petits écrans : le bouton de thème ne garde que son icône */
+@media (max-width: 39.99em) {
+  .bouton-theme {
+    padding-inline: 11px;
+  }
+
+  .bouton-theme__texte {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+
+/* 4. Pied de page ---------------------------------------------------------- */
+
+.pied {
+  margin-top: clamp(48px, 8vw, 96px);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+  background: var(--surface);
+  border-top: var(--site-filet);
+}
+
+.pied__grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--gap-lg) var(--gap-xl);
+  padding-block: var(--gap-xl);
+}
+
+.pied__titre {
+  margin: 0 0 var(--gap-sm);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.pied p {
+  max-width: 42ch;
+  margin: 0 0 var(--gap-sm);
+}
+
+.pied a {
+  color: var(--ink);
+}
+
+
+/* 5. Mise en page et textes ------------------------------------------------ */
+
+.conteneur {
+  width: min(100% - 2 * var(--site-marge), var(--site-largeur));
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: clamp(40px, 6vw, 72px);
+}
+
+.section + .section,
+.ouverture + .section,
+.tete-page + .section {
+  border-top: var(--site-filet);
+}
+
+/* « .flux » : un bloc de texte courant. Les règles ne touchent que ses
+   enfants directs, pour ne jamais modifier l'intérieur des dataviz. */
+.flux > :where(p, ul, ol, dl, blockquote, h2, h3, h4, .a-completer, .encadre) {
+  max-width: var(--site-mesure);
+}
+
+.flux > :where(p, ul, ol, dl) {
+  margin: 0 0 var(--gap-md);
+}
+
+.flux > :where(p) {
+  text-wrap: pretty;
+}
+
+.flux > :where(ul, ol) {
+  padding-left: 1.25em;
+}
+
+.flux > :where(ul, ol) > li + li {
+  margin-top: 0.4em;
+}
+
+.flux > :where(h3) {
+  margin: var(--gap-xl) 0 var(--gap-sm);
+  font-size: var(--fs-heading);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.flux > :where(h2 + h3) {
+  margin-top: var(--gap-md);
+}
+
+.flux > :last-child {
+  margin-bottom: 0;
+}
+
+
+/* 6. Haut de page ---------------------------------------------------------- */
+
+.fil-ariane {
+  padding-top: var(--gap-lg);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+
+.fil-ariane ol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fil-ariane li + li::before {
+  content: "/";
+  content: "/" / "";
+  margin-inline: 0.5em;
+}
+
+.fil-ariane a {
+  color: var(--ink-2);
+}
+
+.tete-page {
+  padding-block: clamp(20px, 4vw, 40px) clamp(24px, 4vw, 40px);
+}
+
+.tete-page h1 {
+  max-width: 17em;
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.04;
+}
+
+.chapeau {
+  max-width: 40em;
+  margin: var(--gap-md) 0 0;
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.3125rem);
+  line-height: 1.5;
+}
+
+.tete-page .a-completer {
+  max-width: var(--site-mesure);
+}
+
+/* « Sur cette page » : liens vers les sections de la page */
+.sommaire-page {
+  max-width: 52rem;
+  margin-top: var(--gap-lg);
+  padding-top: var(--gap-md);
+  border-top: var(--site-filet);
+}
+
+.sommaire-page__titre {
+  margin: 0 0 6px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--ink-2);
+}
+
+.sommaire-page ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+}
+
+
+/* 7. Planches (blocs de figures) --------------------------------------------
+   Une planche accueille une figure : dataviz ou image. Le trait gradué en
+   haut, comme le bord d'une carte, signale une figure de données. */
+
+.planche {
+  position: relative;
+  margin: var(--gap-lg) 0 var(--gap-xl);
+  padding: calc(var(--site-pas-planche) + 8px) var(--site-pas-planche) var(--site-pas-planche);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.planche::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: var(--site-pas-planche);
+  right: var(--site-pas-planche);
+  height: 6px;
+  background:
+    linear-gradient(var(--ink), var(--ink)) left bottom / 100% 1px no-repeat,
+    repeating-linear-gradient(90deg, var(--ink) 0 16px, transparent 16px 32px) left top / 100% 5px no-repeat;
+}
+
+.planche__legende {
+  display: block;
+  max-width: var(--site-mesure);
+  margin: 0 0 var(--gap-md);
+}
+
+.planche__titre {
+  display: block;
+  text-wrap: balance;
+  font-size: var(--fs-heading);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.planche__numero {
+  margin-right: 0.3em;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
+.planche__sous-titre {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.planche__source {
+  margin: var(--gap-md) 0 0;
+  font-size: var(--fs-caption);
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
+.planche > img {
+  display: block;
+  width: 100%;
+}
+
+/* Message affiché à la place d'une figure qui ne se charge pas */
+.planche__message {
+  display: grid;
+  place-items: center;
+  min-height: 14rem;
+  margin: 0;
+  padding: var(--gap-lg);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--ink-2);
+  border: 1px dashed var(--axis);
+  border-radius: 6px;
+}
+
+
+/* 8. Tableaux, pastilles, notes, sources ----------------------------------- */
+
+/* Conteneur qui permet de faire défiler un grand tableau sur mobile */
+.tableau-defilant {
+  max-width: 100%;
+  margin: var(--gap-md) 0 var(--gap-md);
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.tableau-defilant--etroit {
+  max-width: 30rem;
+}
+
+.tableau {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+}
+
+.tableau-defilant--etroit .tableau {
+  min-width: 0;
+}
+
+/* Tableau à beaucoup de colonnes : plus large, on le fait défiler sur mobile */
+.tableau--large {
+  min-width: 50rem;
+}
+
+.tableau caption {
+  padding: 14px 16px 6px;
+  font-weight: 700;
+  text-align: left;
+  caption-side: top;
+}
+
+.tableau th,
+.tableau td {
+  padding: 9px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+
+.tableau thead th {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  color: var(--ink-2);
+  border-bottom-color: var(--axis);
+}
+
+.tableau tbody th {
+  font-weight: 600;
+}
+
+.tableau tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.tableau .nombre {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Pastille : porte la couleur d'une entreprise d'IA à côté de son nom.
+   Le texte, lui, garde toujours la couleur normale. */
+.pastille {
+  display: inline-block;
+  flex: none;
+  width: 0.7em;
+  height: 0.7em;
+  margin-right: 0.45em;
+  vertical-align: 0.02em;
+  border-radius: 50%;
+  background: var(--pastille, var(--autre));
+}
+
+.pastille--google     { --pastille: var(--ia-gemini); }
+.pastille--anthropic  { --pastille: var(--ia-claude); }
+.pastille--openai     { --pastille: var(--ia-chatgpt); }
+.pastille--perplexity { --pastille: var(--ia-perplexity); }
+.pastille--microsoft  { --pastille: var(--ia-copilot); }
+.pastille--mistral    { --pastille: var(--ia-mistral); }
+.pastille--meta       { --pastille: var(--ia-meta); }
+.pastille--deepseek   { --pastille: var(--ia-deepseek); }
+.pastille--autre      { --pastille: var(--autre); }
+
+/* Liste d'entités avec pastille */
+.flux > .liste-ia {
+  padding-left: 0;
+  list-style: none;
+}
+
+/* Note : texte secondaire sous un tableau ou un paragraphe */
+.flux > .note,
+.note {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* Encadré : une précision à mettre en évidence */
+.encadre {
+  margin: var(--gap-lg) 0;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--ink-2);
+  border-radius: 6px;
+}
+
+.encadre > :last-child {
+  margin-bottom: 0;
+}
+
+/* Liste des sources en fin de page */
+.flux > .sources {
+  padding-left: 1.6em;
+}
+
+.flux > .sources > li {
+  padding-left: 0.2em;
+}
+
+.flux > .sources > li + li {
+  margin-top: 0.6em;
+}
+
+.sources cite {
+  font-style: italic;
+}
+
+
+/* 9. Blocs « À compléter » --------------------------------------------------
+   Les hachures, comme un territoire pas encore relevé sur une carte,
+   marquent un texte que le groupe doit écrire. Une fois le texte écrit,
+   remplacez tout le bloc par vos paragraphes (sans la classe). */
+
+.a-completer {
+  margin: var(--gap-lg) 0;
+  padding: 14px 18px;
+  color: var(--ink);
+  background-color: var(--surface);
+  background-image: repeating-linear-gradient(-45deg, transparent 0 9px, var(--line) 9px 10px);
+  border: 2px dashed var(--ink-2);
+  border-radius: 6px;
+}
+
+.a-completer > p,
+.a-completer > ul {
+  margin: 0 0 var(--gap-sm);
+}
+
+.a-completer > ul {
+  padding-left: 1.2em;
+}
+
+.a-completer > :last-child {
+  margin-bottom: 0;
+}
+
+.a-completer--en-ligne {
+  display: inline;
+  margin: 0;
+  padding: 1px 6px;
+  border-width: 1px;
+  border-radius: 4px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* Dans un tableau, la mention reste d'un seul bloc */
+.tableau .a-completer--en-ligne {
+  display: inline-block;
+  padding: 2px 6px;
+}
+
+
+/* 10. Page d'accueil ------------------------------------------------------- */
+
+.ouverture {
+  padding-block: clamp(48px, 9vw, 112px) clamp(36px, 5vw, 64px);
+}
+
+.ouverture__titre {
+  max-width: 8.6em;
+  margin: 0;
+  font-size: clamp(2.625rem, 1.6rem + 5.6vw, 5.5rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.flux > .ouverture__chapeau {
+  max-width: 36em;
+  margin: var(--gap-lg) 0 0;
+  font-size: clamp(1.125rem, 1rem + 0.7vw, 1.375rem);
+  line-height: 1.45;
+}
+
+/* Citation de la question du défi */
+.citation {
+  max-width: 46rem;
+  margin: var(--gap-xl) 0 0;
+  padding-left: clamp(16px, 3vw, 28px);
+  border-left: 3px solid var(--ink);
+}
+
+.citation blockquote {
+  margin: 0;
+}
+
+.citation blockquote p {
+  margin: 0;
+  font-size: clamp(1.25rem, 1.05rem + 1.1vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.citation figcaption {
+  margin-top: 12px;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+}
+
+.ouverture .a-completer {
+  margin-top: var(--gap-xl);
+}
+
+/* Repères chiffrés, chacun suivi de sa source */
+.flux > .reperes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: var(--gap-lg);
+  max-width: none;
+  margin: var(--gap-lg) 0 var(--gap-xl);
+  padding: 0;
+  list-style: none;
+}
+
+.flux > .reperes > li + li {
+  margin-top: 0;
+}
+
+.reperes > li {
+  padding-top: 12px;
+  border-top: 2px solid var(--ink);
+}
+
+.reperes p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.45;
+}
+
+.reperes strong {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.reperes .reperes__source {
+  margin-top: 8px;
+  font-size: var(--fs-caption);
+  color: var(--ink-2);
+}
+
+/* Sommaire des sous-groupes, à la manière d'une table des matières */
+.flux > .sommaire {
+  max-width: 56rem;
+  margin: var(--gap-lg) 0 var(--gap-xl);
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--ink);
+}
+
+.flux > .sommaire > li + li {
+  margin-top: 0;
+}
+
+.sommaire__entree {
+  padding: 18px 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sommaire__lien {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.sommaire__titre {
+  font-size: clamp(1.25rem, 1.05rem + 1vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+.sommaire__lien:hover .sommaire__titre {
+  text-decoration-color: currentColor;
+}
+
+.sommaire__points {
+  flex: 1 1 2rem;
+  min-width: 1.5rem;
+  border-bottom: 2px dotted var(--axis);
+}
+
+.sommaire__info {
+  flex: none;
+  font-size: 0.9375rem;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.sommaire__resume {
+  max-width: var(--site-mesure);
+  margin: 6px 0 0;
+  color: var(--ink-2);
+}
+
+.sommaire__entree .a-completer {
+  max-width: var(--site-mesure);
+  margin: 10px 0 0;
+}
+
+
+/* 11. Utilitaires, impression ---------------------------------------------- */
+
+/* Texte lu par les lecteurs d'écran mais invisible à l'écran */
+.visuellement-cache {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bouton-theme__icone {
+    transition: transform 0.25s ease;
+  }
+}
+
+@media print {
+  .lien-evitement,
+  .bouton-theme,
+  .bouton-menu,
+  .menu,
+  .sommaire-page {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  .planche {
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Électricité, eau, carbone et métaux : que sait-on de chaque entreprise d'IA ? (démo)</title>
+  <!-- Thème : ?theme=dark ou ?theme=light dans l'adresse (sinon réglage du système) -->
+  <script>
+    (function () {
+      var t = new URLSearchParams(location.search).get('theme');
+      if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="../../css/tokens.css">
+  <link rel="stylesheet" href="energie-ia.css">
+  <style>
+    /* Mise en page de la démo seulement (sur le site : css/style.css) */
+    body {
+      margin: 0;
+      background: var(--surface-2);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: var(--fs-body);
+      line-height: 1.5;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: var(--gap-xl) var(--gap-md);
+    }
+    h1 {
+      margin: 0 0 var(--gap-sm);
+      font-size: clamp(26px, 3.6vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    .intro {
+      max-width: 66ch;
+      margin: 0 0 var(--gap-lg);
+      color: var(--ink-2);
+    }
+    .theme {
+      margin: 0 0 var(--gap-md);
+      padding: 6px 12px;
+      border: 1px solid var(--axis);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .theme:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    @media (max-width: 480px) {
+      main { padding: var(--gap-lg) 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Électricité, eau, carbone, métaux&nbsp;: que sait-on de chaque entreprise d'IA&nbsp;?</h1>
+    <p class="intro">Les mesures publiques ne couvrent que les modèles ouverts, et les modèles fermés des grands assistants ne sont connus que par des estimations : choisissez un indicateur, survolez ou touchez une entreprise pour voir les modèles et la source derrière chaque barre.</p>
+    <button type="button" class="theme" id="theme">Passer en thème sombre</button>
+
+    <div class="dv-energie" data-dataviz="energie-ia"></div>
+  </main>
+
+  <script src="../../vendor/d3.min.js"></script>
+  <script src="data-energie.js"></script>
+  <script src="energie-ia.js"></script>
+  <script>
+    (function () {
+      var b = document.getElementById('theme');
+      var root = document.documentElement;
+      function sombre() {
+        var t = root.getAttribute('data-theme');
+        if (t) return t === 'dark';
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+      function maj() { b.textContent = sombre() ? 'Passer en thème clair' : 'Passer en thème sombre'; }
+      b.addEventListener('click', function () {
+        root.setAttribute('data-theme', sombre() ? 'light' : 'dark');
+        maj();
+      });
+      maj();
+    })();
+  </script>
+</body>
+</html>

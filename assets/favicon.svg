@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Icône du site : une échelle graphique, comme sur une carte. -->
+  <rect width="32" height="32" rx="7" fill="#0a2540"/>
+  <rect x="6" y="19" width="20" height="2.5" fill="#ffffff"/>
+  <rect x="6" y="12" width="5" height="7" fill="#ffffff"/>
+  <rect x="16" y="12" width="5" height="7" fill="#ffffff"/>
+</svg>

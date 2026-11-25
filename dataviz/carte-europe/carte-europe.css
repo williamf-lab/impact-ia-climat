@@ -1,0 +1,591 @@
+/* ==========================================================================
+   carte-europe.css — styles de la carte « IA la plus utilisée par pays ».
+   Tout est préfixé par .dv-carte ; les couleurs viennent de css/tokens.css
+   (à charger avant ce fichier). Rien ici ne change le reste de la page.
+   ========================================================================== */
+
+.dv-carte {
+  --dv-carte-trait: 0.75px;           /* frontières (recalculé selon la largeur) */
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--gap-md, 16px);
+  border-radius: var(--radius, 10px);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.dv-carte *,
+.dv-carte *::before,
+.dv-carte *::after {
+  box-sizing: border-box;
+}
+
+.dv-carte p {
+  margin: 0;
+}
+
+/* --- Mise en page : carte + colonne (légende, menu) ----------------------- */
+.dv-carte__corps {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--gap-md, 16px);
+}
+
+.dv-carte--large .dv-carte__corps {
+  grid-template-columns: minmax(0, 1fr) 264px;
+  gap: var(--gap-lg, 24px);
+  align-items: start;
+}
+
+.dv-carte__zone {
+  position: relative;
+  min-width: 0;
+}
+
+.dv-carte__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dv-carte__svg:focus {
+  outline: none;
+}
+
+.dv-carte__svg:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Message de chargement ou d'échec du fond de carte */
+.dv-carte__etat {
+  padding: var(--gap-lg, 24px) var(--gap-md, 16px);
+  color: var(--ink-2);
+  font-size: 14px;
+  text-align: center;
+}
+
+.dv-carte__etat[hidden] {
+  display: none;
+}
+
+.dv-carte__zone--vide .dv-carte__etat {
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+/* --- Pays ---------------------------------------------------------------- */
+.dv-carte__pays {
+  stroke: var(--surface);
+  stroke-width: var(--dv-carte-trait);
+  stroke-linejoin: round;
+}
+
+.dv-carte__pays--donnees {
+  cursor: pointer;
+}
+
+.dv-carte__contour {
+  fill: none;
+  stroke: var(--ink);
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.dv-carte__contour--survol {
+  stroke-width: 1.5px;
+}
+
+.dv-carte__contour--choix {
+  stroke-width: 2px;
+}
+
+/* Petits pays : cercle de la couleur de l'IA en tête, anneau couleur surface */
+.dv-carte__micro {
+  cursor: pointer;
+}
+
+.dv-carte__micro-cible {
+  fill: transparent;
+  stroke: none;
+}
+
+.dv-carte__micro-point {
+  stroke: var(--surface);
+  stroke-width: 2px;
+}
+
+.dv-carte__micro.is-actif .dv-carte__micro-point {
+  stroke: var(--ink);
+  stroke-width: 2px;
+}
+
+/* Légende : isoler les pays d'une IA */
+.dv-carte--isole .dv-carte__pays--donnees:not(.is-isole),
+.dv-carte--isole .dv-carte__micro:not(.is-isole) {
+  opacity: 0.2;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dv-carte__pays--donnees,
+  .dv-carte__micro {
+    transition: opacity 0.15s ease;
+  }
+}
+
+/* --- Colonne : légende, menu, aide ---------------------------------------- */
+.dv-carte__cote {
+  min-width: 0;
+  display: grid;
+  gap: var(--gap-md, 16px);
+  align-content: start;
+}
+
+.dv-carte__legende-titre,
+.dv-carte__label {
+  display: block;
+  margin: 0 0 6px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dv-carte__legende-liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dv-carte--large .dv-carte__legende-liste {
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dv-carte__legende-item,
+.dv-carte__legende-nd {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 4px 6px;
+  margin: 0 -6px;
+  border-radius: 6px;
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.dv-carte__legende-item {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dv-carte__legende-item:hover {
+  background: var(--surface-2);
+}
+
+.dv-carte__legende-item:focus {
+  outline: none;
+}
+
+.dv-carte__legende-item:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
+}
+
+.dv-carte__legende-item[aria-pressed="true"] {
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--axis);
+}
+
+.dv-carte__legende-pays {
+  color: var(--ink-2);
+}
+
+.dv-carte__pastille {
+  flex: none;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-top: 0.2em;
+  border-radius: 3px;
+}
+
+.dv-carte__pastille--nd {
+  background: var(--nodata);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.dv-carte__legende-note,
+.dv-carte__aide {
+  margin-top: 8px;
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.dv-carte__legende-note {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.dv-carte__icone-micro {
+  flex: none;
+  margin-top: 1px;
+}
+
+.dv-carte__icone-micro circle {
+  fill: var(--ink-2);
+  stroke: var(--surface);
+  stroke-width: 2px;
+}
+
+.dv-carte__aide {
+  margin-top: 0;
+}
+
+.dv-carte__select {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  min-height: 40px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid var(--axis);
+  border-radius: 8px;
+  background-color: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+}
+
+.dv-carte__select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.dv-carte__fiche {
+  max-width: 320px;
+  margin-top: 10px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.dv-carte__fiche:empty {
+  display: none;
+}
+
+/* --- Détail d'un pays (info-bulle et fiche) -------------------------------- */
+.dv-carte__d-titre {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.dv-carte__d-tete {
+  margin: 2px 0 10px;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.dv-carte__d-tete strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Barre segmentée fine : 8 px, bouts arrondis, 2 px d'espace entre les parts */
+.dv-carte__barre {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  margin: 0 0 10px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.dv-carte__seg {
+  display: block;
+  flex-basis: 0;
+  min-width: 1px;
+}
+
+.dv-carte__lignes {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dv-carte__ligne {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  column-gap: 8px;
+  align-items: center;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.dv-carte__trait {
+  display: block;
+  width: 14px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.dv-carte__l-nom {
+  color: var(--ink-2);
+}
+
+.dv-carte__l-val {
+  color: var(--ink);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.dv-carte__d-note {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.dv-carte__d-note + .dv-carte__d-note {
+  margin-top: 4px;
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* --- Info-bulle (dans le bloc, jamais en dehors) ---------------------------- */
+.dv-carte__bulle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 256px;
+  max-width: calc(100% - 8px);
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--tooltip-bg);
+  box-shadow: var(--tooltip-shadow);
+  color: var(--ink);
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dv-carte__bulle.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dv-carte__bulle {
+    transition: opacity 0.12s ease;
+  }
+}
+
+/* --- Source et notes ------------------------------------------------------- */
+.dv-carte__notes {
+  margin-top: var(--gap-md, 16px);
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.dv-carte__source {
+  color: var(--ink-2);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.dv-carte__source + .dv-carte__source {
+  margin-top: 4px;
+}
+
+.dv-carte__source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dv-carte__source a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* --- Vue tableau ------------------------------------------------------------- */
+.dv-carte__tableau {
+  margin-top: var(--gap-md, 16px);
+}
+
+.dv-carte__tableau > summary {
+  display: list-item;
+  padding: 6px 0;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.dv-carte__tableau > summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.dv-carte__defil {
+  overflow-x: auto;
+  margin-top: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dv-carte__defil:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.dv-carte__table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.dv-carte__tableau-titre {
+  margin-top: 6px;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.dv-carte__appel {
+  position: absolute; /* hors du flux : n'écarte pas le nombre de la colonne */
+  margin-left: 2px;
+  color: var(--ink-2);
+}
+
+.dv-carte__table th,
+.dv-carte__table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.dv-carte__table thead th {
+  border-bottom-color: var(--axis);
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 600;
+  vertical-align: bottom;
+}
+
+.dv-carte__table tbody th {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* première colonne fixe quand le tableau défile (petits écrans) */
+.dv-carte__table th:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--surface);
+}
+
+.dv-carte__table .dv-carte__num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.dv-carte__td-tete {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.dv-carte__td-tete .dv-carte__pastille {
+  margin-top: 0;
+  align-self: center;
+}
+
+.dv-carte__tableau-note {
+  margin-top: 6px;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+/* --- Divers ------------------------------------------------------------------ */
+.dv-carte__vh {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.dv-carte__erreur {
+  padding: var(--gap-md, 16px);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+@media (max-width: 480px) {
+  .dv-carte {
+    padding: 12px;
+  }
+  .dv-carte__table {
+    font-size: 13px;
+  }
+  .dv-carte__table th,
+  .dv-carte__table td {
+    padding: 6px 8px;
+  }
+}
+
+/* Mode « couleurs forcées » (Windows contraste élevé) : garder les frontières */
+@media (forced-colors: active) {
+  .dv-carte__pays {
+    stroke: CanvasText;
+  }
+  .dv-carte__contour {
+    stroke: Highlight;
+  }
+  .dv-carte__micro-point {
+    stroke: CanvasText;
+  }
+}

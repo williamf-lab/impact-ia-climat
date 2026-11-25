@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  PAGE MODÈLE : à copier pour créer une nouvelle page du site.
+
+  1. Copiez ce fichier dans le dossier pages/ et renommez la copie :
+     minuscules, sans accents ni espaces (par exemple data-centers.html).
+  2. Changez le <title> et la <meta name="description"> ci-dessous.
+  3. Remplacez chaque bloc class="a-completer" par votre texte
+     (des <p>…</p> sans la classe).
+  4. Ajoutez la page au menu de TOUTES les pages (voir le README,
+     partie « Ajouter sa page »). Une seule personne s'en charge.
+  5. Supprimez ces commentaires quand vous n'en avez plus besoin.
+
+  Ce fichier commence par « _ » : il n'apparaît pas dans le menu.
+  ==========================================================================
+-->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- À changer : titre de l'onglet, sous la forme « Titre de la page – Impact de l'IA sur le climat » -->
+  <title>Titre de la page – Impact de l'IA sur le climat</title>
+  <!-- À changer : une phrase qui résume la page (affichée par les moteurs de recherche) -->
+  <meta name="description" content="Résumé de la page en une phrase.">
+  <!-- Page modèle : à ne pas référencer. Supprimez cette ligne dans votre copie. -->
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..800;1,400..800&amp;display=swap">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Si la page contient une dataviz, ajoutez sa feuille de style ici, par exemple :
+  <link rel="stylesheet" href="../dataviz/nom-de-la-dataviz/nom-de-la-dataviz.css">
+  -->
+  <script src="../js/site.js"></script>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <!-- En-tête : identique dans toutes les pages du dossier pages/ (ne pas modifier ici seulement) -->
+  <header class="entete">
+    <div class="conteneur entete__barre">
+      <a class="marque" href="../index.html">Impact de l'IA sur le climat</a>
+      <button class="bouton-theme" type="button" aria-pressed="false">
+        <span class="bouton-theme__icone" aria-hidden="true"></span>
+        <span class="bouton-theme__texte">Thème sombre</span>
+      </button>
+      <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="bouton-menu__icone" aria-hidden="true"></span>
+        Menu
+      </button>
+      <nav class="menu" id="menu-principal" aria-label="Menu principal">
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="transparence.html">Transparence des IA</a></li>
+          <li><a href="sous-groupe-2.html">Sous-groupe 2</a></li>
+          <li><a href="sous-groupe-3.html">Sous-groupe 3</a></li>
+          <li><a href="methodologie.html">Méthodologie</a></li>
+          <li><a href="equipe.html">Équipe</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+    <!-- Fil d'Ariane : remplacez « Titre de la page » -->
+    <nav class="fil-ariane conteneur" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><span aria-current="page">Titre de la page</span></li>
+      </ol>
+    </nav>
+
+    <header class="tete-page conteneur">
+      <h1>Titre de la page</h1>
+      <div class="a-completer">
+        <p><strong>À compléter par le sous-groupe :</strong> le chapeau, une ou deux phrases qui disent la question traitée. Remplacez ce bloc par <code>&lt;p class="chapeau"&gt;…&lt;/p&gt;</code>.</p>
+      </div>
+
+      <!-- « Sur cette page » : un lien par section (href="#id-de-la-section") -->
+      <nav class="sommaire-page" aria-labelledby="titre-sommaire-page">
+        <h2 class="sommaire-page__titre" id="titre-sommaire-page">Sur cette page</h2>
+        <ol>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#partie-1">Première partie</a></li>
+          <li><a href="#methode">Méthode et limites</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <!-- Une <section> par partie. Gardez la même structure :
+         class="section conteneur flux", un id, un <h2> avec son propre id. -->
+    <section class="section conteneur flux" id="introduction" aria-labelledby="titre-introduction">
+      <h2 id="titre-introduction">Introduction</h2>
+      <div class="a-completer">
+        <p><strong>À compléter par le sous-groupe :</strong> la question, pourquoi elle compte pour l'impact de l'IA sur le climat, et ce que la page montre.</p>
+      </div>
+    </section>
+
+    <section class="section conteneur flux" id="partie-1" aria-labelledby="titre-partie-1">
+      <h2 id="titre-partie-1">Première partie</h2>
+      <p>Un paragraphe de texte courant. Les lignes s'arrêtent d'elles-mêmes à une longueur confortable. Pour un chiffre, gardez le format français : 43,3&#8239;% (espace fine insécable avant %, écrite <code>&amp;#8239;</code>).</p>
+
+      <div class="a-completer">
+        <p><strong>À compléter par le sous-groupe :</strong> l'analyse qui accompagne la figure (2 ou 3 constats appuyés sur des chiffres sourcés).</p>
+      </div>
+
+      <!-- FIGURE : une planche par figure. Numérotez les figures dans l'ordre de la page. -->
+      <figure class="planche">
+        <figcaption class="planche__legende">
+          <span class="planche__titre"><span class="planche__numero">Figure 1.</span> Titre de la figure : ce qu'elle montre, où, quand</span>
+          <span class="planche__sous-titre">Ce qui est mesuré et l'unité, par exemple : consommation d'électricité, en kWh par an.</span>
+        </figcaption>
+
+        <div class="a-completer">
+          <p><strong>À compléter par le sous-groupe :</strong> remplacez ce bloc par votre figure.</p>
+          <ul>
+            <li>Une image : <code>&lt;img src="../assets/nom-du-sous-groupe/ma-figure.png" alt="Ce que montre la figure, en une phrase"&gt;</code></li>
+            <li>Une dataviz : <code>&lt;div class="dv-nom" data-dataviz="nom"&gt;&lt;/div&gt;</code> et ses scripts en bas de page (voir le README, « Insérer une dataviz »).</li>
+          </ul>
+        </div>
+
+        <!-- Pour une image, la source va sous la figure. Une dataviz affiche déjà sa source : supprimez alors cette ligne. -->
+        <p class="planche__source">Source : producteur, titre du jeu de données, date (avec un lien).</p>
+      </figure>
+    </section>
+
+    <section class="section conteneur flux" id="methode" aria-labelledby="titre-methode">
+      <h2 id="titre-methode">Méthode et limites</h2>
+      <div class="a-completer">
+        <p><strong>À compléter par le sous-groupe :</strong> d'où viennent les données, comment vous les avez traitées, et ce qu'elles ne disent pas.</p>
+      </div>
+    </section>
+
+    <section class="section conteneur flux" id="sources" aria-labelledby="titre-sources">
+      <h2 id="titre-sources">Sources</h2>
+      <!-- Une ligne par source : auteur ou producteur, titre (avec lien), date. -->
+      <ol class="sources">
+        <li><span class="a-completer a-completer--en-ligne">À compléter : producteur, <cite>titre</cite>, date, lien</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- Pied de page : identique dans toutes les pages du dossier pages/ -->
+  <footer class="pied">
+    <div class="conteneur pied__grille">
+      <div>
+        <h2 class="pied__titre">Un projet étudiant</h2>
+        <p>Site réalisé par un groupe d'étudiants : <span class="a-completer a-completer--en-ligne">À compléter par le groupe : formation, établissement, année</span>.</p>
+        <p>Ce site est indépendant : il n'engage ni l'ADEME, ni data.gouv.fr.</p>
+      </div>
+      <div>
+        <h2 class="pied__titre">Le défi</h2>
+        <p>Réponse au défi <a href="https://defis.data.gouv.fr/defis/limpact-environnemental-de-lia-generative">« L'impact environnemental de l'IA générative »</a>, proposé par l'ADEME dans le cadre de l'Open Data University.</p>
+        <p>Données ouvertes publiques : <a href="https://www.data.gouv.fr/">data.gouv.fr</a></p>
+      </div>
+      <div>
+        <h2 class="pied__titre">Licences</h2>
+        <p>Textes et figures : <span class="a-completer a-completer--en-ligne">À compléter par le groupe : licence choisie</span>.</p>
+        <p>Graphiques réalisés avec D3 (licence ISC). Police Hanken Grotesk (licence SIL Open Font).</p>
+        <p><a href="methodologie.html#licences">Licences des données</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts d'une dataviz éventuelle, en bas de page, dans cet ordre :
+  <script src="../vendor/d3.min.js"></script>
+  <script src="../dataviz/nom-de-la-dataviz/data-nom.js"></script>
+  <script src="../dataviz/nom-de-la-dataviz/nom-de-la-dataviz.js"></script>
+  -->
+</body>
+</html>

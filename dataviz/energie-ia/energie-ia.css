@@ -1,0 +1,497 @@
+/* ==========================================================================
+   energie-ia.css — styles du composant « Électricité, eau, carbone et métaux
+   par entreprise d'IA ». Tout est préfixé par .dv-energie.
+   Couleurs : uniquement les variables de css/tokens.css (clair et sombre).
+   ========================================================================== */
+
+.dv-energie {
+  --dv-barre: var(--ink-2);        /* couleur unique des barres (l'identité est portée par la pastille) */
+  --dv-reserve: 5.5em;             /* place laissée à droite pour la valeur au bout de la barre */
+  position: relative;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: var(--gap-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.dv-energie *,
+.dv-energie *::before,
+.dv-energie *::after { box-sizing: border-box; }
+.dv-energie.is-etroit { padding: var(--gap-md) 12px; }
+
+.dv-energie__bloc + .dv-energie__bloc {
+  margin-top: var(--gap-xl);
+  padding-top: var(--gap-lg);
+  border-top: 1px solid var(--line);
+}
+.dv-energie__titre {
+  margin: 0 0 var(--gap-xs);
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.dv-energie__intro {
+  margin: 0 0 var(--gap-md);
+  max-width: 70ch;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+/* ---------- Sélecteurs (une rangée au-dessus du graphique) ---------- */
+.dv-energie__controles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm) var(--gap-lg);
+  margin: 0 0 var(--gap-md);
+}
+.dv-energie__groupe {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.dv-energie__groupe legend {
+  margin: 0 0 var(--gap-xs);
+  padding: 0;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.dv-energie__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.dv-energie__option {
+  position: relative;
+  display: inline-flex;
+}
+.dv-energie__option input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.dv-energie__option span {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid var(--axis);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.3;
+}
+.dv-energie__option input:hover + span { border-color: var(--ink-2); }
+.dv-energie__option input:checked + span {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--surface);
+  font-weight: 600;
+}
+.dv-energie__option input:focus-visible + span {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- En-tête du graphique : grandeur, unité, type de valeur ---------- */
+.dv-energie__entete { margin: 0 0 var(--gap-sm); }
+.dv-energie__grandeur {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.dv-energie__unite {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.dv-energie__type {
+  display: inline-block;
+  padding: 0 6px;
+  border: 1px solid var(--axis);
+  border-radius: 4px;
+  color: var(--ink);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+/* ---------- Barres horizontales ---------- */
+.dv-energie__barres {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dv-energie__ligne {
+  display: grid;
+  grid-template-columns: minmax(150px, 34%) minmax(0, 1fr);
+  column-gap: 12px;
+  border-radius: 6px;
+  outline: none;
+  cursor: default;
+}
+.dv-energie__ligne:hover,
+.dv-energie__ligne.is-actif { background: var(--surface-2); }
+.dv-energie__ligne:focus-visible { box-shadow: 0 0 0 2px var(--focus); }
+
+.dv-energie__nom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  padding: 8px 0 8px 6px;
+  min-width: 0;
+}
+.dv-energie__pastille {
+  display: inline-block;
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dv-energie__entreprise {
+  font-size: 15px;
+  font-weight: 600;
+}
+.dv-energie__resume {
+  flex-basis: 100%;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--ink-2);
+}
+
+.dv-energie__piste {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 44px;
+  border-left: 1px solid var(--axis);   /* ligne de base, zéro */
+}
+.dv-energie__zone {
+  position: relative;
+  flex: 1 1 auto;
+  height: 14px;
+  margin-right: var(--dv-reserve);
+}
+.dv-energie__barre {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 14px;
+  min-width: 2px;
+  border-radius: 0 4px 4px 0;            /* bout de donnée arrondi, carré sur la ligne de base */
+  background: var(--dv-barre);
+}
+.dv-energie__fourchette {
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--ink);
+}
+.dv-energie__fourchette::before,
+.dv-energie__fourchette::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: 10px;
+  background: var(--ink);
+}
+.dv-energie__fourchette::before { left: 0; }
+.dv-energie__fourchette::after { right: 0; }
+.dv-energie__valeur {
+  position: absolute;
+  top: 50%;
+  padding-left: 6px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+/* Lignes sans donnée : jamais une barre à zéro */
+.dv-energie__ligne--vide .dv-energie__piste { border-left-color: transparent; }
+.dv-energie__vide {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1px solid var(--axis);
+  border-radius: 999px;
+  color: var(--ink-2);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* Légende du trait de fourchette */
+.dv-energie__legende {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: var(--gap-sm) 0 0;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.dv-energie__legende-trait {
+  position: relative;
+  flex: none;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+}
+.dv-energie__legende-trait::before,
+.dv-energie__legende-trait::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  width: 2px;
+  height: 10px;
+  background: var(--ink);
+}
+.dv-energie__legende-trait::before { left: 0; }
+.dv-energie__legende-trait::after { right: 0; }
+
+/* Écran étroit : nom au-dessus de la barre */
+.dv-energie.is-etroit .dv-energie__ligne { grid-template-columns: minmax(0, 1fr); }
+.dv-energie.is-etroit .dv-energie__nom { padding: 8px 0 2px 4px; }
+.dv-energie.is-etroit .dv-energie__piste {
+  min-height: 30px;
+  margin: 0 0 6px 4px;
+}
+
+/* ---------- Note, source et méthode ---------- */
+.dv-energie__note,
+.dv-energie__source {
+  margin: var(--gap-sm) 0 0;
+  max-width: 80ch;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.dv-energie a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.dv-energie a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- Tableaux (vue tableau, publications, matrice) ---------- */
+.dv-energie__tableau-vue { margin-top: var(--gap-md); }
+.dv-energie__tableau-vue summary {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+.dv-energie__tableau-vue summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.dv-energie__defil {
+  max-width: 100%;
+  margin-top: var(--gap-sm);
+  overflow-x: auto;
+}
+.dv-energie table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.dv-energie caption {
+  padding: 0 0 6px;
+  text-align: left;
+  color: var(--ink-2);
+}
+.dv-energie th,
+.dv-energie td {
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.dv-energie thead th {
+  border-bottom-color: var(--axis);
+  color: var(--ink-2);
+  font-weight: 600;
+}
+.dv-energie .dv-energie__num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.dv-energie__cellule-nom {
+  white-space: nowrap;
+  font-weight: 600;
+}
+.dv-energie__cellule-nom .dv-energie__pastille { margin-right: 6px; }
+
+/* Tableau « Ce que publient les entreprises » : en fiches sur écran moyen ou étroit */
+.dv-energie.is-compact .dv-energie__pub thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.dv-energie.is-compact .dv-energie__pub,
+.dv-energie.is-compact .dv-energie__pub tbody,
+.dv-energie.is-compact .dv-energie__pub tr,
+.dv-energie.is-compact .dv-energie__pub th,
+.dv-energie.is-compact .dv-energie__pub td { display: block; width: auto; }
+.dv-energie.is-compact .dv-energie__pub caption {
+  display: block;
+  text-align: left;
+}
+.dv-energie.is-compact .dv-energie__pub tr {
+  padding: var(--gap-sm) 0;
+  border-bottom: 1px solid var(--line);
+}
+.dv-energie.is-compact .dv-energie__pub th,
+.dv-energie.is-compact .dv-energie__pub td {
+  padding: 2px 0;
+  border: 0;
+}
+.dv-energie.is-compact .dv-energie__pub td::before {
+  content: attr(data-label) " : ";
+  color: var(--ink-2);
+}
+.dv-energie.is-compact .dv-energie__pub .dv-energie__num { text-align: left; white-space: normal; }
+.dv-energie__non-publie { color: var(--ink-2); }
+
+/* Matrice « Qui publie quoi ? » */
+.dv-energie__matrice th,
+.dv-energie__matrice td { vertical-align: middle; }
+.dv-energie__matrice thead th:not(:first-child),
+.dv-energie__matrice td { text-align: center; }
+.dv-energie__etat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  outline: none;
+  cursor: default;
+  white-space: nowrap;
+}
+.dv-energie__etat:hover,
+.dv-energie__etat.is-actif { background: var(--surface-2); }
+.dv-energie__etat:focus-visible { box-shadow: 0 0 0 2px var(--focus); }
+.dv-energie__icone {
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+.dv-energie__icone circle {
+  fill: none;
+  stroke: var(--ink-2);
+  stroke-width: 1.5;
+}
+.dv-energie__icone--publie circle { fill: var(--ink); stroke: var(--ink); }
+.dv-energie__icone--tiers path { fill: var(--ink-2); }
+.dv-energie__cles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px var(--gap-md);
+  margin: 0 0 var(--gap-sm);
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.dv-energie__cles li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dv-energie.is-tres-etroit .dv-energie__etat {
+  flex-direction: column;
+  gap: 2px;
+}
+.dv-energie.is-tres-etroit .dv-energie__matrice th,
+.dv-energie.is-tres-etroit .dv-energie__matrice td { padding: 6px 3px; }
+.dv-energie.is-tres-etroit .dv-energie__matrice .dv-energie__cellule-nom { white-space: normal; }
+
+/* ---------- Info-bulle (survol, focus clavier, toucher) ---------- */
+.dv-energie__infobulle {
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(320px, calc(100% - 16px));
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--tooltip-bg);
+  box-shadow: var(--tooltip-shadow);
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.4;
+  pointer-events: none;
+}
+.dv-energie__infobulle[hidden] { display: none; }
+.dv-energie__infobulle p { margin: 0; }
+.dv-energie__infobulle p + p,
+.dv-energie__infobulle p + ul,
+.dv-energie__infobulle ul + p { margin-top: 6px; }
+.dv-energie__ib-tete {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+.dv-energie__ib-valeur {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.dv-energie__ib-valeur--vide { font-size: 15px; }
+.dv-energie__ib-discret { color: var(--ink-2); }
+.dv-energie__infobulle ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.dv-energie__infobulle li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.dv-energie__infobulle li span:last-child {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Erreur : un message dans le bloc, jamais une page blanche */
+.dv-energie__erreur {
+  margin: 0;
+  color: var(--ink);
+  font-size: 14px;
+}
+
+/* Animation douce seulement si l'utilisateur ne demande pas moins de mouvement */
+@media (prefers-reduced-motion: no-preference) {
+  .dv-energie__barre { transition: width 0.35s ease-out; }
+}
+
+/* Mode contraste forcé : les marques restent visibles */
+@media (forced-colors: active) {
+  .dv-energie__barre,
+  .dv-energie__fourchette,
+  .dv-energie__fourchette::before,
+  .dv-energie__fourchette::after { background: CanvasText; }
+  .dv-energie__pastille { forced-color-adjust: none; }
+}

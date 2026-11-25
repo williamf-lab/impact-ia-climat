@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Transparence des entreprises d'IA – Impact de l'IA sur le climat</title>
+  <meta name="description" content="Quelle IA conversationnelle domine dans chaque pays européen, et que publient les entreprises d'IA sur la consommation de leurs modèles ? Carte, graphique, méthode et sources.">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..800;1,400..800&amp;display=swap">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <!-- Styles des deux dataviz (dossiers de N2 et N3) -->
+  <link rel="stylesheet" href="../dataviz/carte-europe/carte-europe.css">
+  <link rel="stylesheet" href="../dataviz/energie-ia/energie-ia.css">
+  <script src="../js/site.js"></script>
+</head>
+<body>
+  <a class="lien-evitement" href="#contenu">Aller au contenu</a>
+
+  <!-- En-tête : identique dans toutes les pages du dossier pages/ -->
+  <header class="entete">
+    <div class="conteneur entete__barre">
+      <a class="marque" href="../index.html">Impact de l'IA sur le climat</a>
+      <button class="bouton-theme" type="button" aria-pressed="false">
+        <span class="bouton-theme__icone" aria-hidden="true"></span>
+        <span class="bouton-theme__texte">Thème sombre</span>
+      </button>
+      <button class="bouton-menu" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="bouton-menu__icone" aria-hidden="true"></span>
+        Menu
+      </button>
+      <nav class="menu" id="menu-principal" aria-label="Menu principal">
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="transparence.html">Transparence des IA</a></li>
+          <li><a href="sous-groupe-2.html">Sous-groupe 2</a></li>
+          <li><a href="sous-groupe-3.html">Sous-groupe 3</a></li>
+          <li><a href="methodologie.html">Méthodologie</a></li>
+          <li><a href="equipe.html">Équipe</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu" tabindex="-1">
+    <nav class="fil-ariane conteneur" aria-label="Fil d'Ariane">
+      <ol>
+        <li><a href="../index.html">Accueil</a></li>
+        <li><span aria-current="page">Transparence des entreprises d'IA</span></li>
+      </ol>
+    </nav>
+
+    <header class="tete-page conteneur">
+      <h1>Transparence des entreprises d'IA</h1>
+      <p class="chapeau">Quelle IA conversationnelle domine dans chaque pays européen, et que sait-on de ce que consomment les modèles des entreprises qui les développent&nbsp;?</p>
+
+      <nav class="sommaire-page" aria-labelledby="titre-sommaire-page">
+        <h2 class="sommaire-page__titre" id="titre-sommaire-page">Sur cette page</h2>
+        <ol>
+          <li><a href="#introduction">Introduction</a></li>
+          <li><a href="#carte">Quelle IA domine dans chaque pays européen&nbsp;?</a></li>
+          <li><a href="#energie">Ce que consomment les IA, et ce qu'on ne sait pas</a></li>
+          <li><a href="#methode">Méthode et limites</a></li>
+          <li><a href="#sources">Sources</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <!-- ============================== INTRODUCTION ============================== -->
+    <section class="section conteneur flux" id="introduction" aria-labelledby="titre-introduction">
+      <h2 id="titre-introduction">Introduction</h2>
+
+      <div class="a-completer">
+        <p><strong>À compléter par le sous-groupe Transparence :</strong> pourquoi la transparence des entreprises d'IA compte pour mesurer l'impact de l'IA sur le climat, et ce que la page va montrer (4 à 6 phrases). Vous pouvez vous appuyer sur l'indice de transparence ci-dessous.</p>
+      </div>
+
+      <h3>Un indice pour mesurer la transparence</h3>
+      <p>Le Foundation Model Transparency Index (FMTI) est publié par des chercheurs du Center for Research on Foundation Models de l'université Stanford. Il note sur 100 la transparence des entreprises qui développent des modèles de fondation, les grands modèles sur lesquels reposent les IA conversationnelles. L'édition de décembre 2025 note 13 entreprises&nbsp;; la moyenne de leurs scores est de 40,69 sur 100.</p>
+
+      <div class="tableau-defilant tableau-defilant--etroit" role="region" aria-labelledby="legende-fmti" tabindex="0">
+        <table class="tableau">
+          <caption id="legende-fmti">Score de transparence FMTI 2025, sur 100</caption>
+          <thead>
+            <tr>
+              <th scope="col">Entreprise</th>
+              <th scope="col" class="nombre">Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">IBM</th><td class="nombre">95</td></tr>
+            <tr><th scope="row">Writer</th><td class="nombre">72</td></tr>
+            <tr><th scope="row">AI21 Labs</th><td class="nombre">66</td></tr>
+            <tr><th scope="row"><span class="pastille pastille--anthropic" aria-hidden="true"></span>Anthropic</th><td class="nombre">46</td></tr>
+            <tr><th scope="row"><span class="pastille pastille--google" aria-hidden="true"></span>Google</th><td class="nombre">41</td></tr>
+            <tr><th scope="row">Amazon</th><td class="nombre">39</td></tr>
+            <tr><th scope="row"><span class="pastille pastille--openai" aria-hidden="true"></span>OpenAI</th><td class="nombre">35</td></tr>
+            <tr><th scope="row"><span class="pastille pastille--deepseek" aria-hidden="true"></span>DeepSeek</th><td class="nombre">32</td></tr>
+            <tr><th scope="row"><span class="pastille pastille--meta" aria-hidden="true"></span>Meta</th><td class="nombre">31</td></tr>
+            <tr><th scope="row">Alibaba</th><td class="nombre">26</td></tr>
+            <tr><th scope="row"><span class="pastille pastille--mistral" aria-hidden="true"></span>Mistral AI</th><td class="nombre">18</td></tr>
+            <tr><th scope="row">xAI</th><td class="nombre">14</td></tr>
+            <tr><th scope="row">Midjourney</th><td class="nombre">14</td></tr>
+            <tr><th scope="row"><span class="pastille pastille--microsoft" aria-hidden="true"></span>Microsoft</th><td class="nombre">non noté</td></tr>
+            <tr><th scope="row"><span class="pastille pastille--perplexity" aria-hidden="true"></span>Perplexity AI</th><td class="nombre">non noté</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">Source : Stanford CRFM, <a href="https://crfm.stanford.edu/fmti/December-2025">Foundation Model Transparency Index</a>, décembre 2025. Microsoft et Perplexity AI ne font pas partie des entreprises notées. La pastille donne la couleur de l'entreprise dans les graphiques du site.</p>
+
+      <p>Les cinq IA conversationnelles de la carte (figure 1), avec leur entreprise et son score&nbsp;:</p>
+      <ul class="liste-ia">
+        <li><span class="pastille pastille--google" aria-hidden="true"></span>Gemini : Google, 41 sur 100</li>
+        <li><span class="pastille pastille--anthropic" aria-hidden="true"></span>Claude : Anthropic, 46 sur 100</li>
+        <li><span class="pastille pastille--openai" aria-hidden="true"></span>ChatGPT : OpenAI, 35 sur 100</li>
+        <li><span class="pastille pastille--perplexity" aria-hidden="true"></span>Perplexity : Perplexity AI, non noté</li>
+        <li><span class="pastille pastille--microsoft" aria-hidden="true"></span>Copilot : Microsoft, non noté</li>
+      </ul>
+    </section>
+
+    <!-- ============================== FIGURE 1 : CARTE ============================== -->
+    <section class="section conteneur flux" id="carte" aria-labelledby="titre-carte">
+      <h2 id="titre-carte">Quelle IA domine dans chaque pays européen&nbsp;?</h2>
+      <p>La carte montre, pour chaque pays, l'IA conversationnelle qui envoie la plus grande part des visites vers des sites web. StatCounter compte ces visites, c'est-à-dire les clics depuis une IA vers un site, et non le nombre d'utilisateurs : on parle donc de part de l'usage.</p>
+
+      <div class="a-completer">
+        <p><strong>À compléter par le sous-groupe Transparence :</strong> ce que montre la carte (2 ou 3 constats appuyés sur les chiffres de la figure) et le lien avec la transparence des entreprises.</p>
+      </div>
+
+      <figure class="planche">
+        <figcaption class="planche__legende">
+          <span class="planche__titre"><span class="planche__numero">Figure 1.</span> IA conversationnelle en tête dans chaque pays européen, octobre 2026</span>
+          <span class="planche__sous-titre">Part des visites envoyées vers des sites web par ChatGPT, Gemini, Claude, Copilot et Perplexity. Ce n'est pas un nombre d'utilisateurs.</span>
+        </figcaption>
+        <!-- Dataviz « carte-europe » (dossier dataviz/carte-europe/, N2) : ne rien écrire dans ce bloc -->
+        <div class="dv-carte" data-dataviz="carte-europe"></div>
+        <noscript><p class="planche__message">Cette carte interactive a besoin de JavaScript pour s'afficher. Les données sont dans le fichier du groupe (voir les sources).</p></noscript>
+      </figure>
+    </section>
+
+    <!-- ============================== FIGURE 2 : ÉNERGIE ============================== -->
+    <section class="section conteneur flux" id="energie" aria-labelledby="titre-energie">
+      <h2 id="titre-energie">Ce que consomment les IA, et ce qu'on ne sait pas</h2>
+      <p>Le graphique rassemble, pour chaque entreprise d'IA, ce que l'on sait de l'électricité, de l'eau, de l'empreinte carbone, des métaux et des minéraux liés à ses modèles : ce que l'entreprise publie elle-même, ce que des tiers mesurent ou estiment (par exemple l'AI Energy Score de Hugging Face, qui ne teste que des modèles ouverts), ou rien. Les chiffres publiés par les entreprises ont chacun leur périmètre et leur unité : ils ne se comparent pas directement.</p>
+
+      <div class="a-completer">
+        <p><strong>À compléter par le sous-groupe Transparence :</strong> ce que montre le graphique, ce qui manque, et ce que ces manques disent de la transparence des entreprises.</p>
+      </div>
+
+      <figure class="planche">
+        <figcaption class="planche__legende">
+          <span class="planche__titre"><span class="planche__numero">Figure 2.</span> Électricité, eau, carbone, métaux : ce que l'on sait de chaque entreprise d'IA</span>
+          <span class="planche__sous-titre">Valeurs publiées par les entreprises, ou mesurées et estimées par des tiers. Une valeur absente signifie que rien n'est publié ni mesuré, pas une consommation nulle.</span>
+        </figcaption>
+        <!-- Dataviz « energie-ia » (dossier dataviz/energie-ia/, N3) : ne rien écrire dans ce bloc -->
+        <div class="dv-energie" data-dataviz="energie-ia"></div>
+        <noscript><p class="planche__message">Ce graphique interactif a besoin de JavaScript pour s'afficher.</p></noscript>
+      </figure>
+    </section>
+
+    <!-- ============================== MÉTHODE ET LIMITES ============================== -->
+    <section class="section conteneur flux" id="methode" aria-labelledby="titre-methode">
+      <h2 id="titre-methode">Méthode et limites</h2>
+
+      <div class="a-completer">
+        <p><strong>À compléter par le sous-groupe Transparence :</strong> comment vous avez collecté et traité les données (outils, étapes, choix), qui a fait quoi, et ce que vous retenez de ces limites.</p>
+      </div>
+
+      <h3>Carte de l'Europe (figure 1)</h3>
+      <ul>
+        <li>Les parts viennent du fichier Excel du groupe : 49 pays, relevés sur StatCounter Global Stats pour octobre 2026.</li>
+        <li>StatCounter mesure la part des visites envoyées vers des sites web par chaque IA conversationnelle (clics de référence), pas un nombre d'utilisateurs.</li>
+        <li>« Autre IA » regroupe le reste : 100&#8239;% moins la somme des cinq IA suivies (DeepSeek et d'autres).</li>
+      </ul>
+
+      <h3>Consommation par entreprise (figure 2)</h3>
+      <ul>
+        <li>L'AI Energy Score mesure l'électricité consommée par des modèles ouverts, en wattheures pour 1&nbsp;000 requêtes : il ne couvre aucun modèle d'Anthropic ni de Perplexity.</li>
+        <li>Pour chaque entreprise et chaque indicateur, le graphique précise si le chiffre est publié par l'entreprise, seulement mesuré ou estimé par un tiers, ou absent. Les sources de chaque valeur sont données sous le graphique.</li>
+        <li>Les chiffres publiés par les entreprises ne se comparent pas directement : leurs méthodes et leurs périmètres diffèrent (médiane ou moyenne par requête, analyse du cycle de vie…).</li>
+        <li>Le détail des valeurs est dans la vue tableau, sous le graphique, et dans le fichier <code>dataviz/energie-ia/README.md</code>.</li>
+      </ul>
+
+      <h3>Indice de transparence</h3>
+      <ul>
+        <li>Le FMTI note des entreprises, pas des IA conversationnelles : le score d'OpenAI vaut pour l'entreprise, pas seulement pour ChatGPT.</li>
+        <li>Microsoft et Perplexity AI ne sont pas notés dans l'édition 2025.</li>
+      </ul>
+    </section>
+
+    <!-- ============================== SOURCES ============================== -->
+    <section class="section conteneur flux" id="sources" aria-labelledby="titre-sources">
+      <h2 id="titre-sources">Sources</h2>
+      <ol class="sources">
+        <li>StatCounter Global Stats, <a href="https://gs.statcounter.com/ai-chatbot-market-share/all/europe"><cite>AI Chatbot Market Share Europe</cite></a> et pages par pays, octobre 2026. Licence CC BY-SA 3.0.</li>
+        <li>A. Wan et al., <a href="https://crfm.stanford.edu/fmti/December-2025"><cite>The 2025 Foundation Model Transparency Index</cite></a>, Stanford CRFM, décembre 2025 (<a href="https://arxiv.org/abs/2512.10169">arXiv:2512.10169</a>).</li>
+        <li>Hugging Face, <a href="https://huggingface.github.io/AIEnergyScore"><cite>AI Energy Score</cite></a>.</li>
+        <li>Chiffres publiés par les entreprises et estimations de tiers (EcoLogits, CLEER…) : voir les sources détaillées sous la figure 2.</li>
+        <li>ADEME, défi <a href="https://defis.data.gouv.fr/defis/limpact-environnemental-de-lia-generative"><cite>L'impact environnemental de l'IA générative</cite></a>, defis.data.gouv.fr.</li>
+        <li>Fond de carte : <a href="https://www.naturalearthdata.com/">Natural Earth</a> (domaine public), par le paquet <a href="https://github.com/topojson/world-atlas">world-atlas</a> (licence ISC).</li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- Pied de page : identique dans toutes les pages du dossier pages/ -->
+  <footer class="pied">
+    <div class="conteneur pied__grille">
+      <div>
+        <h2 class="pied__titre">Un projet étudiant</h2>
+        <p>Site réalisé par un groupe d'étudiants : <span class="a-completer a-completer--en-ligne">À compléter par le groupe : formation, établissement, année</span>.</p>
+        <p>Ce site est indépendant : il n'engage ni l'ADEME, ni data.gouv.fr.</p>
+      </div>
+      <div>
+        <h2 class="pied__titre">Le défi</h2>
+        <p>Réponse au défi <a href="https://defis.data.gouv.fr/defis/limpact-environnemental-de-lia-generative">« L'impact environnemental de l'IA générative »</a>, proposé par l'ADEME dans le cadre de l'Open Data University.</p>
+        <p>Données ouvertes publiques : <a href="https://www.data.gouv.fr/">data.gouv.fr</a></p>
+      </div>
+      <div>
+        <h2 class="pied__titre">Licences</h2>
+        <p>Textes et figures : <span class="a-completer a-completer--en-ligne">À compléter par le groupe : licence choisie</span>.</p>
+        <p>Graphiques réalisés avec D3 (licence ISC). Police Hanken Grotesk (licence SIL Open Font).</p>
+        <p><a href="methodologie.html#licences">Licences des données</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts des dataviz, dans cet ordre : D3, fond de carte, données, composants -->
+  <script src="../vendor/d3.min.js"></script>
+  <script src="../vendor/world-50m.js"></script>
+  <script src="../dataviz/carte-europe/data-usage.js"></script>
+  <script src="../dataviz/carte-europe/carte-europe.js"></script>
+  <script src="../dataviz/energie-ia/data-energie.js"></script>
+  <script src="../dataviz/energie-ia/energie-ia.js"></script>
+</body>
+</html>
