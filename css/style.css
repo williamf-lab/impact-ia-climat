@@ -951,6 +951,11 @@ code {
   }
 }
 
+/* Image seule dans une figure (partie 1) ; un clic l'ouvre en grand */
+.planche__lien-image { display: block; }
+.planche__image { display: block; width: 100%; height: auto; border-radius: 4px; }
+.planche__image--etroite { max-width: 30rem; margin-inline: auto; }
+
 /* Deux images côte à côte dans une figure (partie 2), l'une sous l'autre sur mobile */
 .duo {
   display: grid;
