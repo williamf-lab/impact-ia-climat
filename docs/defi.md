@@ -122,7 +122,7 @@ Ces réutilisations utilisent souvent le mot-clé `opendatauniversity` et la th�
 
 ## Autre défi proche, écarté
 
-- **IA culturelles** (ministère de la Culture, saison 4), autour de Compar:IA : <https://www.data.gouv.fr/topics/ia-culturelles>. Il propose notamment, au niveau intermédiaire, d'analyser le lien entre performance des modèles et consommation énergétique. Écarté : William Nejo a confirmé le défi de l'ADEME.
+- **IA culturelles** (ministère de la Culture, saison 4), autour de Compar:IA : <https://www.data.gouv.fr/topics/ia-culturelles>. Il propose notamment, au niveau intermédiaire, d'analyser le lien entre performance des modèles et consommation énergétique. Écarté : le groupe a confirmé le défi de l'ADEME.
 
 ## Sources de ce relevé
 

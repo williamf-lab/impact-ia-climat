@@ -22,7 +22,7 @@ Transparency Index (Stanford).
 | Date | Classement « Last updated: December 2025 » (fichiers de données modifiés il y a environ 11 mois) ; aucune version plus récente trouvée |
 | Périmètre | Énergie des **GPU seulement** (NVIDIA H100 80 Go, mesure CodeCarbon), 1 000 requêtes par tâche (jeux WikiText, OSCAR, UltraChat), moyenne de 10 passages, lot de 1 requête. **Modèles ouverts** surtout : aucun modèle d'Anthropic ni de Perplexity. Génération de texte et raisonnement sont deux tâches distinctes (le billet v2 indique que les modèles qui raisonnent consomment en moyenne 30 fois plus). |
 | Unité | Wh pour 1 000 requêtes (colonne `total_gpu_energy` en kWh, multipliée par 1 000 comme le fait `app.py`) |
-| Copie | `donnees-brutes/aienergyscore_*_2025-12.csv`, recopiés depuis le Space (deux lectures indépendantes identiques ; mêmes valeurs que l'instantané benchmarklist.com du 06/05/2026 des notes de N1) |
+| Copie | `donnees-brutes/aienergyscore_*_2025-12.csv`, recopiés depuis le Space (deux lectures indépendantes identiques ; mêmes valeurs que l'instantané benchmarklist.com du 06/05/2026) |
 
 ### EcoLogits — eau, carbone, métaux et minéraux, électricité estimée (valeurs **estimées**)
 
