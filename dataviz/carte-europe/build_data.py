@@ -132,7 +132,7 @@ ATYPIQUES = {"MCO", "SMR", "LIE", "AND"}
 #
 # Belgique, ChatGPT : l'Excel contient 49.9, ce qui donne une somme de 102,99 %.
 # Le relevé StatCounter Global Stats d'octobre 2026 pour la Belgique donne 46,9 %
-# (relevé fait par la coordination du groupe, N1, le 25/11/2026). On retient 46,9.
+# (relevé du 25/11/2026). On retient 46,9.
 # La correction n'est appliquée que si l'Excel contient toujours 49.9 : si le
 # groupe corrige l'Excel, le script le signale et ne touche plus à la valeur.
 # ---------------------------------------------------------------------------

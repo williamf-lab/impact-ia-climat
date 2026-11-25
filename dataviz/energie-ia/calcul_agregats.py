@@ -33,7 +33,7 @@ ICI = Path(__file__).resolve().parent
 DATE_CONSULTATION = "2026-11-25"
 
 # ---------------------------------------------------------------------------
-# Entreprises (ordre et couleurs = tokens.css, validés par N1)
+# Entreprises (ordre et couleurs = tokens.css, validés)
 # ---------------------------------------------------------------------------
 ENTREPRISES = [
     {"id": "google", "nom": "Google", "assistant": "Gemini", "couleur": "--ia-gemini"},
