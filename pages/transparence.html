@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Transparence des entreprises d'IA – Impact de l'IA sur le climat</title>
+  <title>3. Transparence des IA – Impact de l'IA sur le climat</title>
   <meta name="description" content="Quelle IA conversationnelle domine dans chaque pays européen, et que publient les entreprises d'IA sur la consommation de leurs modèles ? Carte, graphique, méthode et sources.">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,11 +34,11 @@
       <nav class="menu" id="menu-principal" aria-label="Menu principal">
         <ul>
           <li><a href="../index.html">Accueil</a></li>
-          <li><a href="transparence.html">Transparence des IA</a></li>
-          <li><a href="sous-groupe-2.html">Sous-groupe 2</a></li>
-          <li><a href="sous-groupe-3.html">Sous-groupe 3</a></li>
+          <li><a href="data-centers.html">1. Les data centers</a></li>
+          <li><a href="conversation.html">2. Une conversation avec l'IA</a></li>
+          <li><a href="transparence.html">3. Transparence des IA</a></li>
+          <li><a href="conclusion.html">Conclusion</a></li>
           <li><a href="methodologie.html">Méthodologie</a></li>
-          <li><a href="equipe.html">Équipe</a></li>
         </ul>
       </nav>
     </div>
@@ -54,7 +54,7 @@
 
     <header class="tete-page conteneur">
       <h1>Transparence des entreprises d'IA</h1>
-      <p class="chapeau">Quelle IA conversationnelle domine dans chaque pays européen, et que sait-on de ce que consomment les modèles des entreprises qui les développent&nbsp;?</p>
+      <p class="chapeau">Quelles sont les IA majoritairement utilisées en Europe, et quelles sont leurs conséquences sur l'environnement&nbsp;?</p>
 
       <nav class="sommaire-page" aria-labelledby="titre-sommaire-page">
         <h2 class="sommaire-page__titre" id="titre-sommaire-page">Sur cette page</h2>
@@ -72,9 +72,7 @@
     <section class="section conteneur flux" id="introduction" aria-labelledby="titre-introduction">
       <h2 id="titre-introduction">Introduction</h2>
 
-      <div class="a-completer">
-        <p><strong>À compléter par le sous-groupe Transparence :</strong> pourquoi la transparence des entreprises d'IA compte pour mesurer l'impact de l'IA sur le climat, et ce que la page va montrer (4 à 6 phrases). Vous pouvez vous appuyer sur l'indice de transparence ci-dessous.</p>
-      </div>
+      <p>Actuellement, ChatGPT est l'IA la plus utilisée&nbsp;: dans le monde, 51,58&#8239;% de l'usage des IA conversationnelles revient à ChatGPT. Cependant, l'utilisation de Gemini a fortement augmenté depuis que Google a mis une réponse automatique de l'IA lors des recherches sur son moteur de recherche&nbsp;: Gemini représentait ainsi 10,94&#8239;% des IA utilisées dans le monde en septembre 2026, et 28,86&#8239;% en octobre 2026. L'utilisation des différentes IA dépend cependant du pays.</p>
 
       <h3>Un indice pour mesurer la transparence</h3>
       <p>Le Foundation Model Transparency Index (FMTI) est publié par des chercheurs du Center for Research on Foundation Models de l'université Stanford. Il note sur 100 la transparence des entreprises qui développent des modèles de fondation, les grands modèles sur lesquels reposent les IA conversationnelles. L'édition de décembre 2025 note 13 entreprises&nbsp;; la moyenne de leurs scores est de 40,69 sur 100.</p>
@@ -122,11 +120,9 @@
     <!-- ============================== FIGURE 1 : CARTE ============================== -->
     <section class="section conteneur flux" id="carte" aria-labelledby="titre-carte">
       <h2 id="titre-carte">Quelle IA domine dans chaque pays européen&nbsp;?</h2>
-      <p>La carte montre, pour chaque pays, l'IA conversationnelle qui envoie la plus grande part des visites vers des sites web. StatCounter compte ces visites, c'est-à-dire les clics depuis une IA vers un site, et non le nombre d'utilisateurs : on parle donc de part de l'usage.</p>
-
-      <div class="a-completer">
-        <p><strong>À compléter par le sous-groupe Transparence :</strong> ce que montre la carte (2 ou 3 constats appuyés sur les chiffres de la figure) et le lien avec la transparence des entreprises.</p>
-      </div>
+      <p>La carte interactive que nous avons créée met en évidence l'IA la plus utilisée dans chaque pays d'Europe. Chaque IA correspond à une couleur différente. En déplaçant votre souris sur un pays, vous aurez accès à la proportion d'utilisation des différentes IA dans ce pays.</p>
+      <p>Notre carte se base sur des données de StatCounter d'octobre 2026. StatCounter collecte des données à partir des sites web qui ont installé son outil d'analyse. Il observe alors les visites et l'utilisation réelle de différents navigateurs, systèmes d'exploitation, moteurs de recherche ou services d'IA. Pour les IA conversationnelles, il comptabilise principalement le trafic web envoyé par ces services vers les sites, et non le nombre total d'utilisateurs, d'abonnés ou de requêtes. De plus, pour des services comme Microsoft Copilot, dont une grande partie de l'utilisation se fait de manière intégrée à Windows, Edge, Microsoft 365 ou Teams, l'activité n'est pas détectée par StatCounter, et donc pas comptabilisée. StatCounter nous donne cependant des informations assez fiables pour savoir quels services génèrent le plus de trafic web.</p>
+      <p>StatCounter nous a donné des informations pour différentes IA. Nous avons fait le choix de sélectionner les cinq IA utilisées majoritairement en Europe&nbsp;: ChatGPT, Google Gemini, Microsoft Copilot, Claude et Perplexity. Nous avons choisi de travailler sur l'Europe afin d'avoir une vision globale à l'échelle d'un continent.</p>
 
       <figure class="planche">
         <figcaption class="planche__legende">
@@ -135,17 +131,18 @@
         </figcaption>
         <!-- Dataviz « carte-europe » (dossier dataviz/carte-europe/) : ne rien écrire dans ce bloc -->
         <div class="dv-carte" data-dataviz="carte-europe"></div>
-        <noscript><p class="planche__message">Cette carte interactive a besoin de JavaScript pour s'afficher. Les données sont dans le fichier du groupe (voir les sources).</p></noscript>
+        <noscript><p class="planche__message">Cette carte interactive a besoin de JavaScript pour s'afficher.</p></noscript>
       </figure>
     </section>
 
     <!-- ============================== FIGURE 2 : ÉNERGIE ============================== -->
     <section class="section conteneur flux" id="energie" aria-labelledby="titre-energie">
       <h2 id="titre-energie">Ce que consomment les IA, et ce qu'on ne sait pas</h2>
+      <p>Par la suite, nous avons cherché à savoir quelle IA a l'impact environnemental le plus important. Pour cela, nous avons fait un diagramme comparant les entreprises qui développent ces IA sur la base de différents critères&nbsp;: électricité, eau, empreinte carbone, métaux et minéraux.</p>
       <p>Le graphique rassemble, pour chaque entreprise d'IA, ce que l'on sait de l'électricité, de l'eau, de l'empreinte carbone, des métaux et des minéraux liés à ses modèles : ce que l'entreprise publie elle-même, ce que des tiers mesurent ou estiment (par exemple l'AI Energy Score de Hugging Face, qui ne teste que des modèles ouverts), ou rien. Les chiffres publiés par les entreprises ont chacun leur périmètre et leur unité : ils ne se comparent pas directement.</p>
 
       <div class="a-completer">
-        <p><strong>À compléter par le sous-groupe Transparence :</strong> ce que montre le graphique, ce qui manque, et ce que ces manques disent de la transparence des entreprises.</p>
+        <p><strong>À compléter par le sous-groupe 3 :</strong> votre conclusion sur le graphique. Brouillon du doc : «&nbsp;D'après ce graphique, nous en concluons que l'IA avec l'impact le plus faible est… Il est donc préférable d'utiliser cette IA.&nbsp;»</p>
       </div>
 
       <figure class="planche">
@@ -164,7 +161,7 @@
       <h2 id="titre-methode">Méthode et limites</h2>
 
       <div class="a-completer">
-        <p><strong>À compléter par le sous-groupe Transparence :</strong> comment vous avez collecté et traité les données (outils, étapes, choix), qui a fait quoi, et ce que vous retenez de ces limites.</p>
+        <p><strong>À compléter par le sous-groupe 3 :</strong> comment vous avez collecté et traité les données (outils, étapes, choix), qui a fait quoi, et ce que vous retenez de ces limites.</p>
       </div>
 
       <h3>Carte de l'Europe (figure 1)</h3>

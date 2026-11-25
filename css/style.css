@@ -950,3 +950,13 @@ code {
     break-inside: avoid;
   }
 }
+
+/* Deux images côte à côte dans une figure (partie 2), l'une sous l'autre sur mobile */
+.duo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--gap-md);
+}
+.duo img { display: block; width: 100%; height: auto; }
+.questions { padding-left: 1.4em; }
+.questions li + li { margin-top: var(--gap-xs); }

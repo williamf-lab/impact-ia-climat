@@ -23,11 +23,11 @@ Le site est **statique** : des fichiers HTML, CSS et JavaScript, sans installati
 ```
 index.html                  Accueil du groupe
 pages/
-  transparence.html         Sous-groupe Transparence des entreprises d'IA (carte + graphique énergie)
-  sous-groupe-2.html        Page prête pour le sous-groupe 2 (titre « À définir »)
-  sous-groupe-3.html        Page prête pour le sous-groupe 3 (titre « À définir »)
+  data-centers.html         Partie 1 (sous-groupe 1) : les data centers
+  conversation.html         Partie 2 (sous-groupe 2) : le coût d'une conversation avec l'IA
+  transparence.html         Partie 3 (sous-groupe 3) : transparence des IA (carte + graphique énergie)
+  conclusion.html           Conclusion du groupe
   methodologie.html         Données, jeux data.gouv.fr, licences, façon de travailler
-  equipe.html               Membres (emplacements à remplir)
   _modele.html              Page modèle à copier (hors menu)
 css/
   tokens.css                Couleurs, police, espacements partagés (NE PAS MODIFIER)
@@ -80,20 +80,20 @@ Pour retrouver ceux qui restent : cherchez `a-completer` dans tous les fichiers 
 
 ## Ajouter sa page
 
-Les pages des sous-groupes 2 et 3 existent déjà (`pages/sous-groupe-2.html` et `pages/sous-groupe-3.html`) et sont dans le menu : le plus simple est de les remplir.
+Chaque partie a déjà sa page dans le menu : `pages/data-centers.html` (partie 1), `pages/conversation.html` (partie 2) et `pages/transparence.html` (partie 3). Les textes viennent du document de rédaction du groupe.
 
 Pour créer une page en plus :
 
 1. Copiez `pages/_modele.html` dans `pages/` et renommez la copie : minuscules, sans accents ni espaces, mots séparés par des tirets (par exemple `pages/data-centers.html`).
 2. Dans la copie, changez le `<title>`, la `<meta name="description">`, le `<h1>` et le fil d'Ariane. Supprimez la ligne `<meta name="robots" content="noindex">` et les commentaires d'aide.
-3. Ajoutez la page au menu. Le menu est écrit **dans chaque page** (7 fichiers). Ajoutez la même ligne au même endroit dans tous :
+3. Ajoutez la page au menu. Le menu est écrit **dans chaque page** (7 fichiers : `index.html` et les 6 pages de `pages/`). Ajoutez la même ligne au même endroit dans tous :
    - dans `index.html` : `<li><a href="pages/data-centers.html">Data centers</a></li>`
    - dans les pages de `pages/` : `<li><a href="data-centers.html">Data centers</a></li>`
 4. Ajoutez la page au sommaire de l'accueil (`index.html`, liste `class="sommaire"`).
 
 Le lien de la page ouverte est mis en évidence automatiquement par `js/site.js` : rien à faire.
 
-Pour **renommer** `sous-groupe-2.html` : renommez le fichier, puis cherchez `sous-groupe-2.html` dans tous les fichiers et remplacez chaque lien.
+Pour **renommer** une page : renommez le fichier, puis cherchez son ancien nom dans tous les fichiers et remplacez chaque lien.
 
 Le menu et l'accueil sont partagés : **une seule personne** les modifie, en une fois, après accord du groupe (voir les règles communes).
 
@@ -227,7 +227,7 @@ Le défi demande de publier le travail comme **réutilisation** sur data.gouv.fr
 - [ ] Plus aucun bloc « À compléter » : la recherche de `a-completer` dans les fichiers ne donne plus rien (à part `css/style.css` et `_modele.html`).
 - [ ] Chaque figure a un titre, un sous-titre (ce qui est mesuré, l'unité), une source avec lien et date, et un texte d'analyse.
 - [ ] Chaque chiffre du site a une source ; nombres au format français (`43,3 %`).
-- [ ] Pages Équipe et pied de page remplis (noms écrits avec l'accord de chaque membre) ; licence des contenus choisie et indiquée dans le pied de page de toutes les pages et dans la méthodologie.
+- [ ] Pied de page rempli ; licence des contenus choisie et indiquée dans le pied de page de toutes les pages et dans la méthodologie.
 - [ ] StatCounter crédité avec un lien (licence CC BY-SA 3.0) ; licences des autres sources vérifiées dans la méthodologie.
 - [ ] Méthodologie complète : données, traitements, limites, usage éventuel d'outils d'IA.
 - [ ] Tous les liens fonctionnent, en local et en ligne (attention aux majuscules et aux accents).
