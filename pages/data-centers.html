@@ -131,12 +131,52 @@
       <figure class="planche">
         <figcaption class="planche__legende">
           <span class="planche__titre"><span class="planche__numero">Figure 6.</span> Impacts de la fabrication et de l'usage des data centers, par indicateur</span>
-          <span class="planche__sous-titre">Part de la fabrication, de la distribution et de la fin de vie (en bleu) et part de l'usage (en rouge).</span>
+          <span class="planche__sous-titre">Part de chaque phase du cycle de vie, pour les data centers utilisés en France, y compris ceux situés à l'étranger.</span>
         </figcaption>
-        <a class="planche__lien-image" href="../assets/data-centers/fabrication-ou-usage.jpg" title="Voir l'image en grand">
-          <img class="planche__image" src="../assets/data-centers/fabrication-ou-usage.jpg" alt="Barres empilées de 0 à 100 % pour six indicateurs. La fabrication, la distribution et la fin de vie pèsent presque tout l'épuisement des ressources abiotiques en éléments (minéraux et métaux) et toute la production de déchets. L'usage pèse environ 87 % de l'épuisement des ressources fossiles et de l'énergie primaire, environ 60 % du changement climatique et toute l'énergie finale." width="1920" height="484" loading="lazy">
-        </a>
-        <p class="planche__source">Source&nbsp;: <a href="https://hubblo.org/fr/blog/datacenters-imported-impacts/">Hubblo, «&nbsp;Impacts importés des datacenters&nbsp;: l'angle mort des analyses territoriales des impacts du numérique&nbsp;»</a>, septembre 2023.</p>
+        <div class="cycle-vie" role="img" aria-label="Barres empilées de 0 à 100 % pour six indicateurs, data centers utilisés en France (modèle consommation). Fabrication, distribution et fin de vie, puis usage : épuisement des ressources abiotiques en éléments 99,2 % et 0,8 % ; en ressources fossiles 13 % et 87 % ; changement climatique 40 % et 60 % ; production de déchets 100 % et 0 % ; énergie primaire 13 % et 87 % ; énergie finale 0 % et 100 %.">
+          <ul class="cycle-vie__legende" aria-hidden="true">
+            <li><span class="cycle-vie__puce cycle-vie__seg--fab"></span>Fabrication, distribution et fin de vie</li>
+            <li><span class="cycle-vie__puce cycle-vie__seg--usage"></span>Usage</li>
+          </ul>
+          <ol class="cycle-vie__lignes" aria-hidden="true">
+            <li class="cycle-vie__ligne">
+              <span class="cycle-vie__nom">Épuisement des ressources abiotiques naturelles<span class="cycle-vie__unite">éléments (kg Sb éq.)</span></span>
+              <span class="cycle-vie__barre"><span class="cycle-vie__seg cycle-vie__seg--fab" style="flex-grow: 99.18"><span class="cycle-vie__val">99&nbsp;%</span></span><span class="cycle-vie__seg cycle-vie__seg--usage" style="flex-grow: 0.82"></span></span>
+              <span class="cycle-vie__note">usage&nbsp;: 0,8&nbsp;%</span>
+            </li>
+            <li class="cycle-vie__ligne">
+              <span class="cycle-vie__nom">Épuisement des ressources abiotiques naturelles<span class="cycle-vie__unite">fossiles (MJ)</span></span>
+              <span class="cycle-vie__barre"><span class="cycle-vie__seg cycle-vie__seg--fab" style="flex-grow: 12.98"><span class="cycle-vie__val">13&nbsp;%</span></span><span class="cycle-vie__seg cycle-vie__seg--usage" style="flex-grow: 87.02"><span class="cycle-vie__val">87&nbsp;%</span></span></span>
+              <span class="cycle-vie__note"></span>
+            </li>
+            <li class="cycle-vie__ligne">
+              <span class="cycle-vie__nom">Changement climatique<span class="cycle-vie__unite">kg CO<sub>2</sub> éq.</span></span>
+              <span class="cycle-vie__barre"><span class="cycle-vie__seg cycle-vie__seg--fab" style="flex-grow: 40.19"><span class="cycle-vie__val">40&nbsp;%</span></span><span class="cycle-vie__seg cycle-vie__seg--usage" style="flex-grow: 59.81"><span class="cycle-vie__val">60&nbsp;%</span></span></span>
+              <span class="cycle-vie__note"></span>
+            </li>
+            <li class="cycle-vie__ligne">
+              <span class="cycle-vie__nom">Production de déchets<span class="cycle-vie__unite">kg</span></span>
+              <span class="cycle-vie__barre"><span class="cycle-vie__seg cycle-vie__seg--fab" style="flex-grow: 100.0"><span class="cycle-vie__val">100&nbsp;%</span></span></span>
+              <span class="cycle-vie__note"></span>
+            </li>
+            <li class="cycle-vie__ligne">
+              <span class="cycle-vie__nom">Consommation d'énergie primaire<span class="cycle-vie__unite">MJ</span></span>
+              <span class="cycle-vie__barre"><span class="cycle-vie__seg cycle-vie__seg--fab" style="flex-grow: 13.17"><span class="cycle-vie__val">13&nbsp;%</span></span><span class="cycle-vie__seg cycle-vie__seg--usage" style="flex-grow: 86.83"><span class="cycle-vie__val">87&nbsp;%</span></span></span>
+              <span class="cycle-vie__note"></span>
+            </li>
+            <li class="cycle-vie__ligne">
+              <span class="cycle-vie__nom">Consommation d'énergie finale (usage)<span class="cycle-vie__unite">MJ</span></span>
+              <span class="cycle-vie__barre"><span class="cycle-vie__seg cycle-vie__seg--usage" style="flex-grow: 100.0"><span class="cycle-vie__val">100&nbsp;%</span></span></span>
+              <span class="cycle-vie__note"></span>
+            </li>
+            <li class="cycle-vie__ligne cycle-vie__ligne--axe">
+              <span class="cycle-vie__nom"></span>
+              <span class="cycle-vie__axe"><span style="left:0%">0&nbsp;%</span><span style="left:25%">25&nbsp;%</span><span style="left:50%">50&nbsp;%</span><span style="left:75%">75&nbsp;%</span><span style="left:100%">100&nbsp;%</span></span>
+              <span class="cycle-vie__note"></span>
+            </li>
+          </ol>
+        </div>
+        <p class="planche__source">Source&nbsp;: d'après <a href="https://hubblo.org/fr/blog/datacenters-imported-impacts/">Hubblo, «&nbsp;Impacts importés des datacenters&nbsp;: l'angle mort des analyses territoriales des impacts du numérique&nbsp;»</a>, septembre 2023 (tableau&nbsp;4, modèle consommation).</p>
       </figure>
     </section>
     <section class="section conteneur flux" id="dc19" aria-labelledby="titre-dc19">
