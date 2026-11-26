@@ -5,7 +5,7 @@
    ========================================================================== */
 
 .dv-energie {
-  --dv-barre: var(--ink-2);        /* couleur unique des barres (l'identité est portée par la pastille) */
+  --dv-barre: var(--ink-2);        /* couleur de secours ; chaque barre prend la couleur de son entreprise */
   --dv-reserve: 5.5em;             /* place laissée à droite pour la valeur au bout de la barre */
   position: relative;
   box-sizing: border-box;
@@ -178,14 +178,38 @@
 .dv-energie__zone {
   position: relative;
   flex: 1 1 auto;
-  height: 14px;
+  align-self: stretch;                  /* toute la hauteur de la ligne : la grille reste continue */
+  min-height: 14px;
   margin-right: var(--dv-reserve);
 }
-.dv-energie__barre {
+/* Lignes verticales de l'échelle, derrière les barres */
+.dv-energie__grille {
   position: absolute;
   top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px solid var(--line);
+}
+/* Ligne de l'échelle : graduations sous la dernière barre */
+.dv-energie__ligne--axe,
+.dv-energie__ligne--axe:hover { background: none; }
+.dv-energie__piste--axe { min-height: 26px; align-items: flex-start; }
+.dv-energie__graduation {
+  position: absolute;
+  top: 4px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+.dv-energie__graduation.is-zero { transform: translateX(-2px); }
+.dv-energie__barre {
+  position: absolute;
+  top: 50%;
   left: 0;
   height: 14px;
+  margin-top: -7px;
   min-width: 2px;
   border-radius: 0 4px 4px 0;            /* bout de donnée arrondi, carré sur la ligne de base */
   background: var(--dv-barre);
@@ -267,6 +291,8 @@
   min-height: 30px;
   margin: 0 0 6px 4px;
 }
+.dv-energie.is-etroit .dv-energie__grille { display: none; }
+.dv-energie.is-etroit .dv-energie__piste--axe { min-height: 22px; margin-top: -4px; }
 
 /* ---------- Note, source et méthode ---------- */
 .dv-energie__note,

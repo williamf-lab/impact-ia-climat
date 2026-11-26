@@ -38,6 +38,19 @@
   }
   function avecUnite(v, unite) { return nombre(v) + NBSP + unite; }
 
+  // Échelle lisible : un pas « rond » (1, 2, 2,5 ou 5 × 10^n) et un maximum qui tombe sur une graduation
+  function echelle(max) {
+    if (!(max > 0)) return { max: 1, graduations: [0, 1] };
+    var brut = max / 4;
+    var p = Math.pow(10, Math.floor(Math.log(brut) / Math.LN10));
+    var r = brut / p;
+    var pas = (r <= 1 ? 1 : r <= 2 ? 2 : r <= 2.5 ? 2.5 : r <= 5 ? 5 : 10) * p;
+    var n = Math.ceil(max / pas - 1e-9);
+    var grad = [];
+    for (var i = 0; i <= n; i++) grad.push(parseFloat((i * pas).toPrecision(12)));
+    return { max: grad[grad.length - 1], graduations: grad };
+  }
+
   function couleurSure(c) {
     return /^--ia-[a-z]+$/.test(c || '') ? 'var(' + c + ')' : 'var(--autre)';
   }
@@ -324,14 +337,18 @@
       max = Math.max(max, l.valeur, (typeof l.max === 'number') ? l.max : 0);
     });
 
+    var ech = echelle(max);
+    max = ech.max;
+
     var ol = el('ol', 'dv-energie__barres');
     ol.setAttribute('aria-label', vue.grandeur + ', en ' + vue.uniteLongue + ', par ordre décroissant');
     var fourchettes = false;
     avec.forEach(function (l) {
-      var r = ligneValeur(ctx, vue, l, max);
+      var r = ligneValeur(ctx, vue, l, max, ech.graduations);
       fourchettes = fourchettes || r.fourchette;
       ol.appendChild(r.li);
     });
+    if (avec.length) ol.appendChild(ligneAxe(vue, ech));
     sans.forEach(function (l) { ol.appendChild(ligneVide(ctx, vue, l)); });
     corps.appendChild(ol);
 
@@ -363,7 +380,26 @@
     return d;
   }
 
-  function ligneValeur(ctx, vue, l, max) {
+  // Ligne de l'échelle, sous la dernière barre (décorative : les valeurs exactes sont lues ailleurs)
+  function ligneAxe(vue, ech) {
+    var li = el('li', 'dv-energie__ligne dv-energie__ligne--axe');
+    li.setAttribute('aria-hidden', 'true');
+    li.appendChild(el('div', 'dv-energie__axe-vide'));
+    var piste = el('div', 'dv-energie__piste dv-energie__piste--axe');
+    var zone = el('div', 'dv-energie__zone');
+    ech.graduations.forEach(function (g, i) {
+      var dernier = (i === ech.graduations.length - 1);
+      var t = el('span', 'dv-energie__graduation' + (i === 0 ? ' is-zero' : ''),
+        dernier ? avecUnite(g, vue.uniteCourte || vue.unite) : nombre(g));
+      t.style.left = (g / ech.max * 100) + '%';
+      zone.appendChild(t);
+    });
+    piste.appendChild(zone);
+    li.appendChild(piste);
+    return li;
+  }
+
+  function ligneValeur(ctx, vue, l, max, graduations) {
     var e = ctx.ents[l.entreprise] || { nom: l.entreprise };
     var li = el('li', 'dv-energie__ligne');
     li.tabIndex = 0;
@@ -372,8 +408,15 @@
     var piste = el('div', 'dv-energie__piste');
     var zone = el('div', 'dv-energie__zone');
     var p = max > 0 ? l.valeur / max * 100 : 0;
+    (graduations || []).forEach(function (g) {
+      if (g <= 0) return;
+      var trait = el('span', 'dv-energie__grille');
+      trait.style.left = (g / max * 100) + '%';
+      zone.appendChild(trait);
+    });
     var barre = el('span', 'dv-energie__barre');
     barre.style.width = p + '%';
+    barre.style.background = couleurSure(e.couleur);
     zone.appendChild(barre);
     var bout = p;
     var aFourchette = (typeof l.min === 'number' && typeof l.max === 'number' && l.max > l.min * 1.001);
