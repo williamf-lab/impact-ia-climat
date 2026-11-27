@@ -1014,3 +1014,35 @@ code {
 @media (forced-colors: active) {
   .cycle-vie__seg, .cycle-vie__puce { forced-color-adjust: none; }
 }
+
+/* Bloc « Le poster » (accueil et conclusion) : aperçu cliquable et bouton de téléchargement */
+.poster {
+  display: grid;
+  grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+  gap: var(--gap-lg, 24px);
+  align-items: center;
+}
+.poster__apercu { display: block; }
+.poster__apercu img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.poster__telecharger {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--surface);
+  font-weight: 600;
+  text-decoration: none;
+}
+.poster__telecharger:hover { text-decoration: underline; }
+.poster__telecharger:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 640px) {
+  .poster { grid-template-columns: minmax(0, 1fr); }
+}
